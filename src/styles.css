@@ -1,1 +1,409 @@
-/* You can add global styles to this file, and also import other style files */
+/* Define color variables (palette) */
+:root {
+    --orange: #ff7b00; /* For progress, streak, etc. */
+    --red: #e53935; /* For opponent progress/danger */
+    --blue: #1565c0; /* For buttons/status */
+    --bg: #071126; /* Dark text/primary color (originally blue) */
+    --app-bg-color: #ffb74d; /* Bright orange background color */
+}
+
+/* FIX: Apply the background color to the entire page */
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: var(--app-bg-color); /* Restore orange background */
+    min-height: 100vh;
+}
+
+/* app-wrap narrow centered */
+.app-wrap { max-width: 680px; margin: 18px auto; position:relative; }
+
+/* main box */
+.todo-box {
+    /* Opaque white background for readability */
+    background: #ffffff; 
+    backdrop-filter: none; /* Removed blur */
+    border-radius: 14px;
+    padding: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    /* ADJUSTED MARGIN: Since the HUD is gone, this margin centers the todo box */
+    margin-top: 40px; 
+}
+
+/* TITLE ROW FIX: Hidden Leaf image is removed, so we focus on text */
+.title-row { 
+    display:flex; 
+    align-items:center; 
+    gap:18px; 
+    justify-content:center; 
+    margin-bottom:12px; 
+}
+.title-row h2 { 
+    color: var(--bg); /* Dark text color */
+    margin:0; 
+    font-size:30px; 
+}
+.title-row .leaf { 
+    /* HIDE THE LEAF ICON IF IT'S STILL IN THE HTML */
+    display: none; 
+}
+
+/* NEW TUG-OF-WAR BATTLE STYLES (adapted for dark text) */
+.battle { 
+    display:flex; 
+    flex-direction: column; 
+    align-items:center; 
+    gap: 8px; 
+    margin-bottom:12px; 
+    position: relative; /* Added for streak counter */
+}
+.level-display {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--orange); /* Dark color for visibility */
+    text-shadow: none;
+    margin-bottom: 4px;
+}
+.fighters-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 90%;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--bg); /* Dark text */
+    margin-bottom: 4px;
+}
+.fighters-row .fighter-name:last-child {
+    text-align: right;
+}
+.fighters-row .versus {
+    color: #666;
+    font-size: 12px;
+    align-self: flex-end;
+    margin: 0 10px;
+}
+
+/* Single Progress Bar Style */
+.single-hp-bar { 
+    background: #eee; /* Light background for the bar track */
+    border-radius:6px; 
+    height:14px; 
+    width:90%; 
+    overflow:hidden; 
+    box-shadow: 0 0 5px rgba(0,0,0,0.1); 
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+.hp-fill.blue { 
+    /* Keep the gradient for the fill but ensure it looks good */
+    background: linear-gradient(90deg, #ff7b00, #e53935); 
+    height:100%; 
+    transition: width 350ms ease; 
+    box-shadow: none; 
+    float: left; 
+}
+.hp-readout {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin-top: 4px;
+    font-size: 12px;
+    font-weight: 600;
+}
+.naruto-progress {
+    color: var(--orange);
+}
+.opponent-progress {
+    color: var(--red); 
+}
+/* END NEW TUG-OF-WAR STYLES */
+
+/* Reset/New Game Button Group */
+.battle-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+/* Reset/New Game Button Styles */
+.small-btn {
+    padding: 6px 10px; 
+    font-size: 12px;
+    font-weight: 500;
+}
+.small-btn.secondary {
+    color: var(--bg);
+    border-color: rgba(0,0,0,0.15);
+}
+
+/* New Game (Danger) Button Style */
+.small-btn.danger {
+    color: var(--red);
+    border-color: var(--red);
+}
+
+/* attack animation area */
+.attack-area { display:flex; gap:12px; align-items:center; justify-content:center; margin:8px 0; }
+.attack-gif { width:80px; height:auto; border-radius:8px; }
+.attack-text { 
+    font-size: 16px; 
+    font-weight: 700; 
+    color: var(--orange);
+    text-shadow: none;
+}
+
+/* form row (adapted for light background) */
+.form-row { display:flex; gap:8px; align-items:center; margin-bottom:12px; justify-content:center; }
+.form-row input[type="text"] { 
+    flex:2; 
+    padding:8px 10px; 
+    border-radius:8px; 
+    border:1px solid rgba(0,0,0,0.15); 
+    background:#f9f9f9; 
+    color:var(--bg); 
+}
+.form-row select { 
+    padding:8px; 
+    border-radius:8px; 
+    border:1px solid rgba(0,0,0,0.15); 
+    background:#f9f9f9; 
+    color:var(--bg); 
+}
+
+/* FIX: SIMPLIFIED DATE INPUT STYLES */
+.form-row input[type="date"] {
+    padding: 8px 10px; 
+    border-radius: 8px; 
+    border: 1px solid rgba(0,0,0,0.15); 
+    background: #f9f9f9; 
+    color: var(--bg); 
+    /* Set a specific width to fit nicely, replaces the complex icon approach */
+    width: 120px; 
+    cursor: pointer;
+}
+
+/* list */
+.list { margin-top:8px; }
+.empty {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    padding: 20px;
+}
+.task { 
+    display:flex; 
+    justify-content:space-between; 
+    align-items:center; 
+    background: #fcfcfc; /* Very light background for tasks */
+    padding:10px; 
+    border-radius:8px; 
+    margin-bottom:8px; 
+    border:1px solid rgba(0,0,0,0.05); 
+    transition: background 200ms ease; 
+    color: var(--bg);
+}
+.task:hover { background: #f0f0f0; }
+.left { display:flex; gap:10px; align-items:center; flex:1; }
+.meta .name { font-weight:600; }
+.meta .name.done { text-decoration:line-through; opacity:0.7; }
+.small { font-size:12px; color:#666; }
+
+/* right actions */
+.right { display:flex; align-items:center; gap:8px; }
+.priority { padding:6px 10px; border-radius:8px; color:#071126; font-weight:700; font-size: 11px; }
+.priority.low { background:#bdf7c9; }
+.priority.medium { background:#fff3b0; }
+.priority.high { background:#ffb0b0; }
+
+/* edit/delete buttons */
+.edit-btn, .del-btn { background:transparent; border:none; color:#333; cursor:pointer; font-weight:700; transition: transform 150ms ease; }
+.edit-btn:hover, .del-btn:hover { transform:scale(1.1); color: var(--orange); }
+
+/* === TASK EDITING STYLES === */
+.editing-task {
+    flex-wrap: wrap; /* Allows edit fields to stack on small screens */
+    background: #f0f0f0;
+}
+.edit-fields-wrap {
+    display: flex;
+    flex-grow: 1;
+    gap: 8px;
+    align-items: center;
+    margin-right: 10px;
+}
+.edit-input {
+    flex-grow: 1;
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(0,0,0,0.15);
+    background: #fff;
+}
+.edit-select {
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid rgba(0,0,0,0.15);
+    background: #fff;
+}
+.edit-date-input {
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(0,0,0,0.15);
+    background: #fff;
+    width: 100px; /* Smaller width for task list */
+}
+.edit-controls button {
+    padding: 6px 8px;
+    font-size: 12px;
+}
+.edit-controls .save-btn {
+    background: var(--blue);
+    color: white;
+}
+.edit-controls .cancel-btn {
+    color: var(--bg);
+    border-color: rgba(0,0,0,0.15);
+}
+/* END TASK EDITING STYLES */
+
+/* === STREAK COUNTER STYLE === */
+.streak-counter {
+    position: absolute;
+    top: 0; 
+    right: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--orange); /* Dark color on light background */
+    background: #fff3b0; /* Light yellow background */
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 5;
+}
+
+
+/* === REWARDS OVERLAY STYLES (Modal/Sidebar) === */
+.rewards-overlay {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 350px; /* Slightly wider than the HUD card */
+    max-height: 80vh;
+    background: #ffffff; 
+    padding: 18px;
+    border-top-left-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    z-index: 1000; /* Ensure it's on top */
+    transform: translateY(0);
+    transition: transform 300ms ease-out;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.rewards-overlay .hud-title {
+    color: var(--bg); /* Dark text for title */
+    font-weight: 800; 
+    font-size: 16px; 
+    margin-bottom: 6px;
+}
+.overlay-hint {
+    font-size: 14px; /* Increased font size for importance */
+    color: var(--orange); /* Use orange for high visibility */
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.reward-list-scroll {
+    max-height: calc(80vh - 120px); /* Adjust height for scrolling */
+    overflow-y: auto;
+    padding-right: 10px; /* Space for scrollbar */
+}
+.rewards-overlay .reward-item {
+    padding: 8px 0;
+    border-bottom: 1px dashed rgba(0,0,0,0.15);
+    font-size: 12px;
+}
+.rewards-overlay .reward-item:last-child {
+    border-bottom: none;
+}
+.rewards-overlay .reward-name {
+    font-size: 13px;
+    font-weight: 700;
+}
+.rewards-overlay .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* === FIXED REWARDS BUTTON STYLE === */
+.rewards-btn {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    background: var(--bg); /* Dark background */
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 50px;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+    z-index: 999;
+}
+.rewards-btn:hover {
+    background: #2a2a2a;
+    transform: translateY(-2px);
+}
+
+/* small responsive */
+@media (max-width:768px){
+.app-wrap{
+padding:10px;
+margin: 20px 10px;
+max-width: calc(100% - 20px);
+}
+.form-row {
+    flex-wrap: wrap;
+}
+.form-row select, .form-row input[type="date"], .form-row button {
+    flex-basis: 48%; /* Date input now shares space with select */
+    margin-top: 5px;
+}
+.form-row input[type="text"] {
+    flex-basis: 100%; 
+}
+.rewards-overlay {
+    width: 100%;
+    max-height: 90vh;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.rewards-btn {
+    bottom: 10px;
+    right: 10px;
+}
+/* Editing fields responsive fix */
+.editing-task {
+    flex-direction: column;
+    align-items: flex-start;
+}
+.edit-fields-wrap {
+    flex-wrap: wrap;
+    margin-right: 0;
+    margin-bottom: 8px;
+    width: 100%;
+}
+.edit-input {
+    flex-basis: 100%;
+    margin-bottom: 8px;
+}
+.edit-select, .edit-date-input {
+    flex-basis: calc(50% - 4px);
+    width: auto;
+}
+}
