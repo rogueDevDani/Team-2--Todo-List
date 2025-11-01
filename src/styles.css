@@ -6,14 +6,23 @@
     --bg: #071126; /* Dark text/primary color (originally blue) */
     --app-bg-color: #ffb74d; /* Bright orange background color */
 }
-
-/* FIX: Apply the background color to the entire page */
 html, body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: var(--app-bg-color); /* Restore orange background */
-    min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  min-height: 100vh;
+  
+  
+  background-image: 
+  linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+  url(assets/hokage_office-large.png) !important;
+  
+  background-size: cover !important;/* Scale the image to cover the entire page */
+  background-repeat: no-repeat !important; /* Prevent the image from tiling */
+  background-attachment: fixed !important; /* Keep the image in place when scrolling */
+  background-position: center center !important; /* Center the image */
+  background-color: #ffb700; /*Fallback color (Orange) is now less likely to show */
+  
 }
 
 /* app-wrap narrow centered */

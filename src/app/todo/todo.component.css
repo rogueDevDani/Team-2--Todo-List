@@ -4,29 +4,7 @@
     --red: #e53935; /* For opponent progress/danger */
     --blue: #1565c0; /* For buttons/status */
     --bg: #071126; /* Dark text/primary color (originally blue) */
-    --app-bg-color: #ffb74d; /* Bright orange background color (fallback) */
-}
-
-/* FIX: Apply the NEW Naruto background image and use a dark overlay for contrast */
-html, body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    min-height: 100vh;
-    
-    /* 1. SET THE NEW IMAGE WITH A DARK OVERLAY (using !important to ensure override) */
-    background-image: 
-        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
-        url('https://wallpapers-clan.com/wp-content/uploads/2024/05/naruto-uzumaki-enjoying-blue-sky-desktop-wallpaper-cover.jpg') !important; 
-    
-    /* 2. BACKGROUND SETTINGS */
-    background-size: cover !important;          /* Scale the image to cover the entire page */
-    background-repeat: no-repeat !important;    /* Prevent the image from tiling */
-    background-attachment: fixed !important;    /* Keep the image in place when scrolling */
-    background-position: center center !important; /* Center the image */
-
-    /* 3. Fallback color (Orange) is now less likely to show */
-    background-color: #ff7b00; 
+    --app-bg-color: #887354; /* Bright orange background color (fallback) */
 }
 
 /* app-wrap narrow centered */
@@ -35,7 +13,7 @@ html, body {
 /* main box */
 .todo-box {
     /* Opaque white background for readability */
-    background: #ffffff; 
+    background: #ffffffbe; 
     backdrop-filter: none; /* Removed blur */
     border-radius: 14px;
     padding: 18px;
