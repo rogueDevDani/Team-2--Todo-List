@@ -1,8 +1,9 @@
-/* Define color variables (palette) */
+/*Custom Font*/
 @font-face {
     font-family: PixelSans;
     src: url(assets/PixelifySans-VariableFont_wght.ttf);
 }
+/* Define color variables (palette) */
 :root {
     --orange: #ff7b00; /* For progress, streak, etc. */
     --red: #e53935; /* For opponent progress/danger */
@@ -150,7 +151,7 @@ html, body {
 }
 .small-btn.secondary {
     color: var(--bg);
-    border-color: rgba(0,0,0,0.15);
+    border: none;
 }
 
 /* New Game (Danger) Button Style */
@@ -198,7 +199,6 @@ html, body {
     width: 120px; 
     cursor: pointer;
 }
-
 /* list */
 .list { margin-top:8px; }
 .empty {

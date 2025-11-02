@@ -1,7 +1,7 @@
 <div class="app-wrap">
     <div class="card todo-box">
         <div class="title-row">
-      <img class="leaf" scr="https://upload.wikimedia.org/wikipedia/commons/3/3f/Leaf_Village_Symbol.svg" alt="Hidden Leaf Symbol" />
+      <img class="leaf" src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Leaf_Village_Symbol.svg" alt="Hidden Leaf Symbol" />
       <h2>Naruto Mission Tracker</h2>
     </div>
 
@@ -14,7 +14,9 @@
             <div class="level-display">Level {{levelIndex + 1}}</div>
       
       <div class="fighters-row">
-        <div class="fighter-name">Naruto</div> 
+        <div class="fighter-name">
+            <img src="src\assets\NarutoSprite.png" alt="Naruto"> <!-- FIX: Image not showing up-->
+        </div> 
         <div class="versus">VS</div>
         <div class="fighter-name">{{currentOpponentName}}</div>
       </div>
@@ -29,6 +31,7 @@
       </div>
 
       <div class="battle-actions">
+        <img src="src\assets\button.png"> <!--FIX: Figure out how to display the image-->
         <button class="btn secondary small-btn danger" (click)="startNewGame()">New Game (Lvl 1)</button>
         <button class="btn secondary small-btn" (click)="resetLevel()">Reset Battle</button>
       </div>
@@ -39,15 +42,20 @@
     </div>
 
         <div class="form-row">
-      <input type="text" [(ngModel)]="newTask" placeholder="Enter mission..." />
-      <select [(ngModel)]="priority">
-        <option value="low">Low</option>
-        <option value="medium">Medium</option>
-        <option value="high">High</option>
-      </select>
+      <input type="text" [(ngModel)]="newTask" placeholder="Enter your mission..." />
 
-      <input type="date" [(ngModel)]="newDueDate" class="date-input-field" placeholder="Due Date" />
-            <button class="btn" (click)="addTask()">Add</button>
+    <label> Mission Priority:
+        <select [(ngModel)]="priority">
+        <option id="low" value="low">Low</option>
+        <option id="medium" value="medium">Medium</option>
+        <option id="high" value="high">High</option>
+      </select>
+    </label>
+      
+    <label>Due date: 
+        <input type="date" [(ngModel)]="newDueDate" class="date-input-field" placeholder="Due Date">
+    </label>
+    <button class="btn" (click)="addTask()">Add Mission</button>
       
     </div>
 

@@ -9,6 +9,7 @@
 
 *{
     box-sizing: border-box;
+    font-family: PixelSans, Arial;
 }
 
 /* app-wrap narrow centered */
@@ -16,8 +17,7 @@
 
 /* main box */
 .todo-box {
-    /* Opaque white background for readability */
-    background: #c55d5dbe; 
+    background:#eaeaea9d; 
     backdrop-filter: none; /* Removed blur */
     border-radius: 14px;
     padding: 18px;
@@ -39,16 +39,20 @@
     margin-bottom:12px; 
 }
 .title-row h2 { 
-    color: var(--bg); /* Dark text color */
+    color: #2a2a32; /* Same grey-ish colur but made it a bit darker for visibility*/
     margin:0; 
-    font-family: PixelSans;
     font-size:50px; 
 }
 .title-row .leaf { 
     /* HIDE THE LEAF ICON IF IT'S STILL IN THE HTML */
     display: none; 
 }
-
+.title-row::before{ /* Place holder until we can figure out how to show images*/
+    content: "🍃";
+    font-size: 50px;
+    position: relative;
+    left: 55px;
+}
 /* NEW TUG-OF-WAR BATTLE STYLES (adapted for dark text) */
 .battle { 
     display:flex; 
@@ -59,9 +63,9 @@
     position: relative; /* Added for streak counter */
 }
 .level-display {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--orange); /* Dark color for visibility */
+    font-size: 25px;
+    font-weight: 600;
+    color: #F66C2D; 
     text-shadow: none;
     margin-bottom: 4px;
 }
@@ -75,6 +79,15 @@
     color: var(--bg); /* Dark text */
     margin-bottom: 4px;
 }
+.fighters-row .fighter-name{
+    background-color: #1565c0;
+
+    
+}
+.fighters-row .fighter-name img{
+    color: red;
+}
+
 .fighters-row .fighter-name:last-child {
     text-align: right;
 }
@@ -98,7 +111,7 @@
 }
 .hp-fill.blue { 
     /* Keep the gradient for the fill but ensure it looks good */
-    background: linear-gradient(90deg, #ff7b00, #e53935); 
+    background: linear-gradient(90deg, #bc671d, #e53935); 
     height:100%; 
     transition: width 350ms ease; 
     box-shadow: none; 
@@ -130,18 +143,25 @@
 /* Reset/New Game Button Styles */
 .small-btn {
     padding: 6px 10px; 
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;
+    background-clip: text;
+    color: transparent; /* Transparent cuz we need to put this on an image*/
+    /* Or make an image itself a button*/
+}
+.small-btn:hover{
+    border: #071126 2px solid;
+    cursor: pointer;
 }
 .small-btn.secondary {
-    color: var(--bg);
-    border-color: rgba(0,0,0,0.15);
+    color:#F0EBDF;
+    border-color: rgba(169, 55, 55, 0.15);
 }
 
 /* New Game (Danger) Button Style */
 .small-btn.danger {
-    color: var(--red);
-    border-color: var(--red);
+    color: #E7E419;
+    border-color: #E7E419;
 }
 
 /* attack animation area */
@@ -156,33 +176,75 @@
 
 /* form row (adapted for light background) */
 .form-row { display:flex; gap:8px; align-items:center; margin-bottom:12px; justify-content:center; }
+
+/* Mission Enter Box*/
 .form-row input[type="text"] { 
     flex:2; 
     padding:8px 10px; 
     border-radius:8px; 
-    border:1px solid rgba(0,0,0,0.15); 
-    background:#f9f9f9; 
-    color:var(--bg); 
+    border:3px solid rgba(0,0,0,0.15); 
+    background: #082b8c9a; 
+    color:white; 
 }
+.form-row input[type="text"]:hover{
+    background-color: #576791;
+}
+::placeholder{
+    color: white;
+}
+
+/*Priority Selection box*/
 .form-row select { 
     padding:8px; 
     border-radius:8px; 
     border:1px solid rgba(0,0,0,0.15); 
-    background:#f9f9f9; 
-    color:var(--bg); 
+    background:#e77844; 
+    color:rgb(255, 255, 255); 
+}
+.form-row option[value="low"], option[value="medium"], option[value="high"]{
+    background-color: #F0EBDF;
+    color: black;
 }
 
+/*Due Date Selction*/
 /* FIX: SIMPLIFIED DATE INPUT STYLES */
 .form-row input[type="date"] {
     padding: 8px 10px; 
-    border-radius: 8px; 
-    border: 1px solid rgba(0,0,0,0.15); 
-    background: #f9f9f9; 
-    color: var(--bg); 
+    border-radius: 5px; 
+    border: 1px solid rgba(0,0,0,0.15);   
     /* Set a specific width to fit nicely, replaces the complex icon approach */
-    width: 120px; 
+    min-width: 150px; 
     cursor: pointer;
 }
+.form-row .date-input-field{
+    background-color: #363641;
+    color: #F0EBDF;
+    font-size: 14px;
+}
+
+/*Lable for Priority and Due date*/
+label{
+    font-weight: 500;
+}
+
+/*Add Button*/
+.form-row .btn{
+    border:#082C8C 4px outset;
+    background-color: #F0EBDF;
+    font-size: 14px;
+    height: 38px;
+    border-radius: 20px;
+    color:#082C8C;
+    position: relative;
+    left: 30px;
+}
+.form-row .btn:hover{
+    font-size: 16px;
+    color: #4691CC;
+    font-weight: bold;
+    background-color: #292932
+}
+/* -----Form Row End ----- */
 
 /* list */
 .list { margin-top:8px; }
@@ -269,15 +331,17 @@
 
 /* === STREAK COUNTER STYLE === */
 .streak-counter {
-    position: absolute;
-    top: 0; 
-    right: 10px;
+    position: relative;
+    top: -100px; 
+    left: 500px;
     font-size: 14px;
-    font-weight: 600;
-    color: var(--orange); /* Dark color on light background */
-    background: #fff3b0; /* Light yellow background */
+    font-weight: 500;
+    font-family: PixelSans;
+    text-align: center;
+    color: #F66C2D; /* light color on dark background */
+    background:#363641 ; /* dark grey background */
     padding: 4px 8px;
-    border-radius: 6px;
+    border-radius: 5px;
     border: 1px solid rgba(0,0,0,0.1);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     z-index: 5;
