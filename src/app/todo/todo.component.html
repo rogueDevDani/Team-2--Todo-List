@@ -13,22 +13,31 @@
       
             <div class="level-display">Level {{levelIndex + 1}}</div>
       
-      <div class="fighters-row">
-        <div class="fighter-name">
-            <img src="src\assets\NarutoSprite.png" alt="Naruto"> <!-- FIX: Image not showing up-->
-        </div> 
-        <div class="versus">VS</div>
-        <div class="fighter-name">{{currentOpponentName}}</div>
-      </div>
+<div class="battle-container">
+  <!-- Naruto -->
+  <div class="fighter-box left-fighter">
+    <img src="assets/NarutoSprite.png" alt="Naruto" class="fighter-img">
+    <div class="fighter-label">Naruto</div>
+  </div>
 
-            <div class="single-hp-bar">
-        <div class="hp-fill blue" [style.width.%]="playerProgressPercentage"></div>
-      </div>
-      
-            <div class="hp-readout">
-        <span class="naruto-progress">{{playerProgressPercentage | number:'1.0-0'}}%</span>
-        <span class="opponent-progress">{{100 - playerProgressPercentage | number:'1.0-0'}}%</span>
-      </div>
+  <!-- HP Bar -->
+  <div class="hp-wrapper">
+    <div class="single-hp-bar">
+      <div class="hp-fill blue" [style.width.%]="playerProgressPercentage"></div>
+    </div>
+    <div class="hp-readout">
+      <span class="naruto-progress">{{playerProgressPercentage | number:'1.0-0'}}%</span>
+      <span class="opponent-progress">{{100 - playerProgressPercentage | number:'1.0-0'}}%</span>
+    </div>
+  </div>
+
+  <!-- Opponent -->
+  <div class="fighter-box right-fighter">
+    <img src="assets/MizukiSprite.png" alt="Mizuki" class="fighter-img">
+    <div class="fighter-label">{{currentOpponentName}}</div>
+  </div>
+</div>
+
 
       <div class="battle-actions">
         <img src="src\assets\button.png"> <!--FIX: Figure out how to display the image-->

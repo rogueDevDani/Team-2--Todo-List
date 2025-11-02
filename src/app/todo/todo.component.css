@@ -81,6 +81,7 @@
 }
 .fighters-row .fighter-name{
     background-color: #1565c0;
+    box-shadow: none;
 
     
 }
@@ -141,28 +142,33 @@
 }
 
 /* Reset/New Game Button Styles */
+/* === CUSTOM BUTTONS USING button.png BACKGROUND === */
 .small-btn {
-    padding: 6px 10px; 
-    font-size: 14px;
-    font-weight: 500;
-    background-clip: text;
-    color: transparent; /* Transparent cuz we need to put this on an image*/
-    /* Or make an image itself a button*/
-}
-.small-btn:hover{
-    border: #071126 2px solid;
-    cursor: pointer;
-}
-.small-btn.secondary {
-    color:#F0EBDF;
-    border-color: rgba(169, 55, 55, 0.15);
+  background: url('../../assets/button.png') no-repeat center center / cover;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  width: 200px;        /* adjust button width */
+  height: 50px;        /* adjust button height */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  box-shadow: none;    /* removes shadow */
+  transition: transform 0.2s ease;
 }
 
-/* New Game (Danger) Button Style */
-.small-btn.danger {
-    color: #E7E419;
-    border-color: #E7E419;
+.small-btn:hover {
+  transform: scale(1.05);
 }
+
+/* optional: slightly different look for danger button */
+.small-btn.danger {
+  filter: hue-rotate(-20deg) brightness(1.1);
+}
+
 
 /* attack animation area */
 .attack-area { display:flex; gap:12px; align-items:center; justify-content:center; margin:8px 0; }
@@ -470,3 +476,103 @@ max-width: calc(100% - 20px);
     width: auto;
 }
 }
+
+/* === BATTLE CONTAINER STYLING === */
+.battle-container {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* center everything evenly */
+  gap: 60px; /* more space between the two name boxes */
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  flex-wrap: wrap; /* ensures it adapts on smaller screens */
+}
+
+/* === FIGHTER NAME BOXES (text only inside blue box) === */
+.fighter-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+.fighter-img {
+  width: 70px;
+  height: auto;
+  margin-bottom: 8px;
+}
+
+.fighter-label {
+  background-color: rgba(21, 101, 192, 0.85); /* blue with slight transparency */
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 6px 20px;
+  text-align: center;
+  border-radius: 6px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: none; /* remove shadow */
+  width: 120px;
+  height: 40 px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+/* === CENTERED HP BAR BETWEEN NAME BOXES === */
+.hp-wrapper {
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 600px; 
+  min-width: 400px; 
+  margin-top: 100px;
+}
+
+/* HP bar style */
+.single-hp-bar {
+  background: #e0e0e0;
+  border-radius: 8px;
+  height: 18px;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.hp-fill.blue {
+  background: linear-gradient(90deg, #ff7b00, #e53935);
+  height: 100%;
+  transition: width 350ms ease;
+}
+
+.hp-readout {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 14px;
+  font-weight: bold;
+  color: #363641;
+  margin-top: 5px;
+}
+/* Remove the shadowy white background behind Naruto and Mizuki */
+.fighters-row {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Also clear any inner container layer that adds that white haze */
+.fighters-row .fighter-name {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
