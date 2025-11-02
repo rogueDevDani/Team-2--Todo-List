@@ -7,20 +7,27 @@
     --app-bg-color: #887354; /* Bright orange background color (fallback) */
 }
 
+*{
+    box-sizing: border-box;
+}
+
 /* app-wrap narrow centered */
 .app-wrap { max-width: 680px; margin: 18px auto; position:relative; }
 
 /* main box */
 .todo-box {
     /* Opaque white background for readability */
-    background: #ffffffbe; 
+    background: #c55d5dbe; 
     backdrop-filter: none; /* Removed blur */
     border-radius: 14px;
     padding: 18px;
+    min-width: 175%;
     border: 1px solid rgba(0,0,0,0.1);
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    position: relative;
+    right: 250px; 
     /* ADJUSTED MARGIN: Since the HUD is gone, this margin centers the todo box */
-    margin-top: 40px; 
+    margin-top: 20px; 
 }
 
 /* TITLE ROW FIX: Hidden Leaf image is removed, so we focus on text */
@@ -34,7 +41,8 @@
 .title-row h2 { 
     color: var(--bg); /* Dark text color */
     margin:0; 
-    font-size:30px; 
+    font-family: PixelSans;
+    font-size:50px; 
 }
 .title-row .leaf { 
     /* HIDE THE LEAF ICON IF IT'S STILL IN THE HTML */

@@ -1,4 +1,8 @@
 /* Define color variables (palette) */
+@font-face {
+    font-family: PixelSans;
+    src: url(assets/PixelifySans-VariableFont_wght.ttf);
+}
 :root {
     --orange: #ff7b00; /* For progress, streak, etc. */
     --red: #e53935; /* For opponent progress/danger */
@@ -6,6 +10,7 @@
     --bg: #071126; /* Dark text/primary color (originally blue) */
     --app-bg-color: #ffb74d; /* Bright orange background color */
 }
+
 html, body {
   margin: 0;
   padding: 0;
@@ -52,7 +57,7 @@ html, body {
 .title-row h2 { 
     color: var(--bg); /* Dark text color */
     margin:0; 
-    font-size:30px; 
+    font-size:50px; 
 }
 .title-row .leaf { 
     /* HIDE THE LEAF ICON IF IT'S STILL IN THE HTML */
