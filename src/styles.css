@@ -1,3 +1,8 @@
+/*Custom Font*/
+@font-face {
+    font-family: PixelSans;
+    src: url(assets/PixelifySans-VariableFont_wght.ttf);
+}
 /* Define color variables (palette) */
 :root {
     --orange: #ff7b00; /* For progress, streak, etc. */
@@ -7,13 +12,23 @@
     --app-bg-color: #ffb74d; /* Bright orange background color */
 }
 
-/* FIX: Apply the background color to the entire page */
 html, body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: var(--app-bg-color); /* Restore orange background */
-    min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  min-height: 100vh;
+  
+  
+  background-image: 
+  linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+  url(assets/hokage_office-large.png) !important;
+  
+  background-size: cover !important;/* Scale the image to cover the entire page */
+  background-repeat: no-repeat !important; /* Prevent the image from tiling */
+  background-attachment: fixed !important; /* Keep the image in place when scrolling */
+  background-position: center center !important; /* Center the image */
+  background-color: #ffb700; /*Fallback color (Orange) is now less likely to show */
+  
 }
 
 /* app-wrap narrow centered */
@@ -43,7 +58,7 @@ html, body {
 .title-row h2 { 
     color: var(--bg); /* Dark text color */
     margin:0; 
-    font-size:30px; 
+    font-size:50px; 
 }
 .title-row .leaf { 
     /* HIDE THE LEAF ICON IF IT'S STILL IN THE HTML */
@@ -136,7 +151,7 @@ html, body {
 }
 .small-btn.secondary {
     color: var(--bg);
-    border-color: rgba(0,0,0,0.15);
+    border: none;
 }
 
 /* New Game (Danger) Button Style */
@@ -184,7 +199,6 @@ html, body {
     width: 120px; 
     cursor: pointer;
 }
-
 /* list */
 .list { margin-top:8px; }
 .empty {
