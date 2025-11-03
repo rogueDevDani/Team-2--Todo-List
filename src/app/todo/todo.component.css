@@ -5,12 +5,8 @@
     --blue: #1565c0; /* For buttons/status */
     --bg: #071126; /* Dark text/primary color (originally blue) */
     --app-bg-color: #887354; /* Bright orange background color (fallback) */
-    --app-bg-color: #887354; /* Bright orange background color (fallback) */
 }
 
-*{
-    box-sizing: border-box;
-    font-family: PixelSans, Arial;
 *{
     box-sizing: border-box;
     font-family: PixelSans, Arial;
@@ -22,20 +18,15 @@
 /* main box */
 .todo-box {
     background:#eaeaea9d; 
-    background:#eaeaea9d; 
     backdrop-filter: none; /* Removed blur */
     border-radius: 14px;
     padding: 18px;
-    min-width: 175%;
     min-width: 175%;
     border: 1px solid rgba(0,0,0,0.1);
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     position: relative;
     right: 250px; 
-    position: relative;
-    right: 250px; 
     /* ADJUSTED MARGIN: Since the HUD is gone, this margin centers the todo box */
-    margin-top: 20px; 
     margin-top: 20px; 
 }
 
@@ -49,20 +40,12 @@
 }
 .title-row h2 { 
     color: #2a2a32; /* Same grey-ish colur but made it a bit darker for visibility*/
-    color: #2a2a32; /* Same grey-ish colur but made it a bit darker for visibility*/
     margin:0; 
-    font-size:50px; 
     font-size:50px; 
 }
 .title-row .leaf { 
     /* HIDE THE LEAF ICON IF IT'S STILL IN THE HTML */
     display: none; 
-}
-.title-row::before{ /* Place holder until we can figure out how to show images*/
-    content: "🍃";
-    font-size: 50px;
-    position: relative;
-    left: 55px;
 }
 .title-row::before{ /* Place holder until we can figure out how to show images*/
     content: "🍃";
@@ -80,9 +63,6 @@
     position: relative; /* Added for streak counter */
 }
 .level-display {
-    font-size: 25px;
-    font-weight: 600;
-    color: #F66C2D; 
     font-size: 25px;
     font-weight: 600;
     color: #F66C2D; 
@@ -132,7 +112,6 @@
 }
 .hp-fill.blue { 
     /* Keep the gradient for the fill but ensure it looks good */
-    background: linear-gradient(90deg, #bc671d, #e53935); 
     background: linear-gradient(90deg, #bc671d, #e53935); 
     height:100%; 
     transition: width 350ms ease; 
@@ -205,8 +184,6 @@
 .form-row { display:flex; gap:8px; align-items:center; margin-bottom:12px; justify-content:center; }
 
 /* Mission Enter Box*/
-
-/* Mission Enter Box*/
 .form-row input[type="text"] { 
     flex:2; 
     padding:8px 10px; 
@@ -214,18 +191,7 @@
     border:3px solid rgba(0,0,0,0.15); 
     background: #082b8c9a; 
     color:white; 
-    border:3px solid rgba(0,0,0,0.15); 
-    background: #082b8c9a; 
-    color:white; 
 }
-.form-row input[type="text"]:hover{
-    background-color: #576791;
-}
-::placeholder{
-    color: white;
-}
-
-/*Priority Selection box*/
 .form-row input[type="text"]:hover{
     background-color: #576791;
 }
@@ -240,15 +206,7 @@
     border:1px solid rgba(0,0,0,0.15); 
     background:#e77844; 
     color:rgb(255, 255, 255); 
-    background:#e77844; 
-    color:rgb(255, 255, 255); 
 }
-.form-row option[value="low"], option[value="medium"], option[value="high"]{
-    background-color: #F0EBDF;
-    color: black;
-}
-
-/*Due Date Selction*/
 .form-row option[value="low"], option[value="medium"], option[value="high"]{
     background-color: #F0EBDF;
     color: black;
@@ -260,42 +218,10 @@
     padding: 8px 10px; 
     border-radius: 5px; 
     border: 1px solid rgba(0,0,0,0.15);   
-    border-radius: 5px; 
-    border: 1px solid rgba(0,0,0,0.15);   
     /* Set a specific width to fit nicely, replaces the complex icon approach */
-    min-width: 150px; 
     min-width: 150px; 
     cursor: pointer;
 }
-.form-row .date-input-field{
-    background-color: #363641;
-    color: #F0EBDF;
-    font-size: 14px;
-}
-
-/*Lable for Priority and Due date*/
-label{
-    font-weight: 500;
-}
-
-/*Add Mission Button*/
-.form-row .btn{
-    border:#082C8C 4px outset;
-    background-color: #F0EBDF;
-    font-size: 14px;
-    height: 38px;
-    border-radius: 20px;
-    color:#082C8C;
-    position: relative;
-    left: 30px;
-}
-.form-row .btn:hover{
-    font-size: 16px;
-    color: #4691CC;
-    font-weight: bold;
-    background-color: #292932
-}
-/* -----Form Row End ----- */
 .form-row .date-input-field{
     background-color: #363641;
     color: #F0EBDF;
@@ -414,22 +340,13 @@ label{
     position: relative;
     top: -100px; 
     left: 500px;
-    position: relative;
-    top: -100px; 
-    left: 500px;
     font-size: 14px;
     font-weight: 500;
     font-family: PixelSans;
     text-align: center;
     color: #F66C2D; /* light color on dark background */
     background:#363641 ; /* dark grey background */
-    font-weight: 500;
-    font-family: PixelSans;
-    text-align: center;
-    color: #F66C2D; /* light color on dark background */
-    background:#363641 ; /* dark grey background */
     padding: 4px 8px;
-    border-radius: 5px;
     border-radius: 5px;
     border: 1px solid rgba(0,0,0,0.1);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -658,4 +575,4 @@ max-width: calc(100% - 20px);
   box-shadow: none !important;
   border: none !important;
 }
-}
+
