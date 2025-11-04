@@ -80,13 +80,13 @@
     margin-bottom: 4px;
 }
 .fighters-row .fighter-name{
-    background-color: #1565c0;
+    background-color: transparent;
     box-shadow: none;
-
+    border: none;
     
 }
 .fighters-row .fighter-name img{
-    color: red;
+    color: transparent;
 }
 
 .fighters-row .fighter-name:last-child {
@@ -562,17 +562,18 @@ max-width: calc(100% - 20px);
   color: #363641;
   margin-top: 5px;
 }
-/* Remove the shadowy white background behind Naruto and Mizuki */
-.fighters-row {
-  background: transparent !important;
-  box-shadow: none !important;
-  border: none !important;
+
+
+.fighter-icon {
+  width: 120px;             /* adjust as needed */
+  height: auto;
+  image-rendering: pixelated; /* keeps the pixel style */
+  margin-bottom: 6px;
+  transform: translateY(-5px); /* lifts it slightly above text */
 }
 
-/* Also clear any inner container layer that adds that white haze */
-.fighters-row .fighter-name {
-  background: transparent !important;
-  box-shadow: none !important;
-  border: none !important;
+/* Optional hover animation for fun */
+.fighter-icon:hover {
+  transform: translateY(-10px) scale(1.05);
+  transition: transform 0.2s ease-in-out;
 }
-

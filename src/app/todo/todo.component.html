@@ -16,7 +16,7 @@
 <div class="battle-container">
   <!-- Naruto -->
   <div class="fighter-box left-fighter">
-    <img src="assets/NarutoSprite.png" alt="Naruto" class="fighter-img">
+   <img src="assets/NarutoSprite.png" alt="Naruto" class="fighter-img"> 
     <div class="fighter-label">Naruto</div>
   </div>
 
@@ -31,16 +31,17 @@
     </div>
   </div>
 
-  <!-- Opponent -->
+ <!-- Opponent -->
   <div class="fighter-box right-fighter">
     <img src="assets/MizukiSprite.png" alt="Mizuki" class="fighter-img">
     <div class="fighter-label">{{currentOpponentName}}</div>
   </div>
-</div>
+</div> 
+
 
 
       <div class="battle-actions">
-        <img src="src\assets\button.png"> <!--FIX: Figure out how to display the image-->
+        <img src="assets\button.png"> <!--FIX: Figure out how to display the image-->
         <button class="btn secondary small-btn danger" (click)="startNewGame()">New Game (Lvl 1)</button>
         <button class="btn secondary small-btn" (click)="resetLevel()">Reset Battle</button>
       </div>
