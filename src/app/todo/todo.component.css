@@ -500,9 +500,17 @@ max-width: calc(100% - 20px);
 }
 
 .fighter-img {
-  width: 70px;
+  width: 120px;             /* adjust as needed */
   height: auto;
-  margin-bottom: 8px;
+  image-rendering: pixelated; /* keeps the pixel style */
+  margin-bottom: 6px;
+  transform: translateY(-5px); /* lifts it slightly above text */
+}
+
+/* Optional hover animation for fun */
+.fighter-img:hover {
+  transform: translateY(-10px) scale(1.05);
+  transition: transform 0.2s ease-in-out;
 }
 
 .fighter-label {
@@ -561,19 +569,4 @@ max-width: calc(100% - 20px);
   font-weight: bold;
   color: #363641;
   margin-top: 5px;
-}
-
-
-.fighter-icon {
-  width: 120px;             /* adjust as needed */
-  height: auto;
-  image-rendering: pixelated; /* keeps the pixel style */
-  margin-bottom: 6px;
-  transform: translateY(-5px); /* lifts it slightly above text */
-}
-
-/* Optional hover animation for fun */
-.fighter-icon:hover {
-  transform: translateY(-10px) scale(1.05);
-  transition: transform 0.2s ease-in-out;
 }
