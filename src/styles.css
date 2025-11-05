@@ -21,7 +21,7 @@ html, body {
   
   background-image: 
   linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-  url(assets/hokage_office-large.png) !important;
+  url(assets/hokage_office.jpg) !important;
   
   background-size: cover !important;/* Scale the image to cover the entire page */
   background-repeat: no-repeat !important; /* Prevent the image from tiling */

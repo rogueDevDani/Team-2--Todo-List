@@ -1,10 +1,10 @@
 /* Define color variables (palette) */
 :root {
-    --orange: #ff7b00; /* For progress, streak, etc. */
+    --orange: #F66C2D; /* For progress, streak, etc. */
     --red: #e53935; /* For opponent progress/danger */
-    --blue: #1565c0; /* For buttons/status */
-    --bg: #071126; /* Dark text/primary color (originally blue) */
-    --app-bg-color: #887354; /* Bright orange background color (fallback) */
+    --blue: #4691CC; /* For buttons/status */
+    --bg: #363641; /* Dark text/primary color (originally blue) */
+    --app-bg-color: #082C8C; /* Dark blue background color (fallback) */
 }
 
 *{
@@ -39,7 +39,7 @@
     margin-bottom:12px; 
 }
 .title-row h2 { 
-    color: #2a2a32; /* Same grey-ish colur but made it a bit darker for visibility*/
+    color: #202027; /* Same grey-ish colur but made it a bit darker for visibility*/
     margin:0; 
     font-size:50px; 
 }
@@ -144,7 +144,7 @@
 /* Reset/New Game Button Styles */
 /* === CUSTOM BUTTONS USING button.png BACKGROUND === */
 .small-btn {
-  background: url('../../assets/button.png') no-repeat center center / cover;
+  background: url("../../assets/button.png") no-repeat center center / cover;
   border: none;
   color: white;
   font-weight: bold;
@@ -499,12 +499,18 @@ max-width: calc(100% - 20px);
   border: none;
 }
 
-.fighter-img {
+.battle-container .fighter-box_left-fighter img {
   width: 120px;             /* adjust as needed */
   height: auto;
   image-rendering: pixelated; /* keeps the pixel style */
   margin-bottom: 6px;
-  transform: translateY(-5px); /* lifts it slightly above text */
+}
+
+.battle-container .fighter-box_right-fighter img {
+  width: 180px;
+  image-rendering: pixelated; /* keeps the pixel style */
+  position: relative;
+  left: -30px;
 }
 
 /* Optional hover animation for fun */
