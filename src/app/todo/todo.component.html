@@ -1,49 +1,49 @@
 <div class="app-wrap">
-    <div class="card todo-box">
-        <div class="title-row">
-      <img class="leaf" src="" alt="Hidden Leaf Symbol" /> <!--Fix: NEED TO ADD HIDDEN LEAF SYMBOL BEFORE-->
-      <h2>Naruto Mission Tracker</h2>
-    </div>
+      <div class="card todo-box">
+            <div class="title-row">
+            <img class="leaf" src="" alt="Hidden Leaf Symbol" /> <!--Fix: NEED TO ADD HIDDEN LEAF SYMBOL BEFORE-->
+            <h2>Naruto Mission Tracker</h2>
+          </div>
 
-        <div class="battle">
-        
-          <div class="streak-counter">
-              🔥 STREAK: <strong>{{currentStreak}}</strong>
+            <div class="battle">
+
+      <div class="streak-counter">
+        🔥 STREAK: <strong>{{currentStreak}}</strong>
+      </div>
+           
+      <div class="level-display">
+        <div class="scroll-image">
+          <img src="scroll_small.png" alt="Scroll Image">
+        </div>
+        <div class="level-number">
+          Level {{levelIndex + 1}}
+        </div>
+      </div>
+           
+      <div class="battle-container">
+        <!-- Naruto -->
+        <div class="fighter-box_left-fighter">
+          <img src="naruto_sprite.png" class="fighter-img">
+          <div class="fighter-label">Naruto</div>
+        </div>
+
+        <!-- HP Bar -->
+        <div class="hp-wrapper">
+          <div class="single-hp-bar">
+            <div class="hp-fill blue" [style.width.%]="playerProgressPercentage"></div>
           </div>
-      
-          <div class="level-display">
-            <div class="scroll-image">
-              <img src="scroll_small.png" alt="Scroll Image">
-            </div>
-            <div class="level-number">
-              Level {{levelIndex + 1}}
-            </div>
+          <div class="hp-readout">
+            <span class="naruto-progress">{{playerProgressPercentage | number:'1.0-0'}}%</span>
+            <span class="opponent-progress">{{100 - playerProgressPercentage | number:'1.0-0'}}%</span>
           </div>
-      
-<div class="battle-container">
-  <!-- Naruto -->
-  <div class="fighter-box_left-fighter">
-   <img src="naruto_sprite.png" class="fighter-img"> 
-    <div class="fighter-label">Naruto</div>
-  </div>
+        </div>
 
-  <!-- HP Bar -->
-  <div class="hp-wrapper">
-    <div class="single-hp-bar">
-      <div class="hp-fill blue" [style.width.%]="playerProgressPercentage"></div>
-    </div>
-    <div class="hp-readout">
-      <span class="naruto-progress">{{playerProgressPercentage | number:'1.0-0'}}%</span>
-      <span class="opponent-progress">{{100 - playerProgressPercentage | number:'1.0-0'}}%</span>
-    </div>
-  </div>
-
- <!-- Opponent -->
-  <div class="fighter-box_right-fighter">
-    <img src="mizuki_sprite.png" alt="Mizuki" class="fighter-img">
-    <div class="fighter-label">{{currentOpponentName}}</div> <!--FIX: Change Sprites with opponents-->
-  </div>
-</div> 
+        <!-- Opponent -->
+        <div class="fighter-box_right-fighter">
+          <img src="mizuki_sprite.png" alt="Mizuki" class="fighter-img">
+          <div class="fighter-label">{{currentOpponentName}}</div> <!--FIX: Change Sprites with opponents-->
+        </div>
+      </div>
 
 
 
@@ -51,89 +51,92 @@
         <button class="btn secondary small-btn danger" (click)="startNewGame()">New Game (Lvl 1)</button>
         <button class="btn secondary small-btn" (click)="resetLevel()">Reset Battle</button>
       </div>
-    </div>
-            <div class="attack-area" *ngIf="showAttack">
-      <div class="attack-text">{{ attackText }}</div>
-      <img *ngIf="attackGifUrl" [src]="attackGifUrl" class="attack-gif" alt="Naruto Attack" />
-    </div>
+         
+    </div>
+                <div class="attack-area" *ngIf="showAttack">
+            <div class="attack-text">{{ attackText }}</div>
+            <img *ngIf="attackGifUrl" [src]="attackGifUrl" class="attack-gif" alt="Naruto Attack" />
+          </div>
 
-        <div class="form-row">
-      <input type="text" [(ngModel)]="newTask" placeholder="Enter your mission..." />
+            <div class="form-row">
+            <input type="text" [(ngModel)]="newTask" placeholder="Enter your mission..." />
 
-    <label> Mission Priority:
+      <label> Mission Priority:
         <select [(ngModel)]="priority">
-        <option id="low" value="low">Low</option>
-        <option id="medium" value="medium">Medium</option>
-        <option id="high" value="high">High</option>
-      </select>
-    </label>
-      
-    <label>Due date: 
+                  <option id="low" value="low">Low</option>
+                  <option id="medium" value="medium">Medium</option>
+                  <option id="high" value="high">High</option>
+                </select>
+      </label>
+           
+      <label>Due date:
         <input type="date" [(ngModel)]="newDueDate" class="date-input-field" placeholder="Due Date">
-    </label>
-    <button class="btn" (click)="addTask()">Add Mission</button>
-      
-    </div>
+      </label>
+      <button class="btn" (click)="addTask()">Add Mission</button>
+           
+         
+    </div>
 
-        <div class="list">
-      <div *ngIf="tasks.length===0" class="empty">No missions yet — add one to start the battle.</div>
+            <div class="list">
+            <div *ngIf="tasks.length===0" class="empty">No missions yet — add one to start the battle.</div>
 
-      <div class="task" *ngFor="let t of tasks" [class.editing-task]="t.editing">
-            <ng-container *ngIf="!t.editing">
-                <div class="left">
-                    <input type="checkbox" [(ngModel)]="t.completed" (change)="toggleComplete(t)" />
-                    <div class="meta">
-                        <div [class.done]="t.completed" class="name">{{t.name}}</div>
-                        <div class="small">Due: <span>{{t.dueDate || '—'}}</span></div>
-                    </div>
-                </div>
-                <div class="right">
-                    <div class="priority" [ngClass]="t.priority">{{t.priority | uppercase}}</div>
-                    <button class="edit-btn" (click)="editTask(t)">✏️</button>
-                    <button class="del-btn" (click)="removeTask(t.id)">🗑️</button>
-                </div>
-            </ng-container>
+            <div class="task" *ngFor="let t of tasks" [class.editing-task]="t.editing">
+        <ng-container *ngIf="!t.editing">
+          <div class="left">
+            <input type="checkbox" [(ngModel)]="t.completed" (change)="toggleComplete(t)" />
+            <div class="meta">
+              <div [class.done]="t.completed" class="name">{{t.name}}</div>
+              <div class="small">Due: <span>{{t.dueDate || '—'}}</span></div>
+            </div>
+          </div>
+          <div class="right">
+            <div class="priority" [ngClass]="t.priority">{{t.priority | uppercase}}</div>
+            <button class="edit-btn" (click)="editTask(t)">✏️</button>
+            <button class="del-btn" (click)="removeTask(t.id)">🗑️</button>
+          </div>
+        </ng-container>
 
-            <ng-container *ngIf="t.editing">
-                <div class="edit-fields-wrap">
-                    <input type="text" [(ngModel)]="t.name" class="edit-input" placeholder="Mission Name" />
-                    <select [(ngModel)]="t.priority" class="edit-select">
-                        <option value="low">Low</option>
-                        <option value="medium">Medium</option>
-                        <option value="high">High</option>
-                    </select>
-                    <input type="date" [(ngModel)]="t.dueDate" class="edit-date-input" />
-                </div>
-                <div class="right edit-controls">
-                    <button class="btn small-btn save-btn" (click)="saveEdit(t)">Save</button>
-                    <button class="btn secondary small-btn cancel-btn" (click)="cancelEdit(t)">Cancel</button>
-                </div>
-            </ng-container>
-      </div>
-    </div>
-  </div>
+        <ng-container *ngIf="t.editing">
+          <div class="edit-fields-wrap">
+            <input type="text" [(ngModel)]="t.name" class="edit-input" placeholder="Mission Name" />
+            <select [(ngModel)]="t.priority" class="edit-select">
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+            <input type="date" [(ngModel)]="t.dueDate" class="edit-date-input" />
+          </div>
+          <div class="right edit-controls">
+            <button class="btn small-btn save-btn" (click)="saveEdit(t)">Save</button>
+            <button class="btn secondary small-btn cancel-btn" (click)="cancelEdit(t)">Cancel</button>
+          </div>
+        </ng-container>
+             
+      </div>
+          </div>
+      </div>
 
   <div class="rewards-overlay" *ngIf="showRewardsOverlay">
-      <button class="close-btn" (click)="toggleRewardsOverlay()">❌</button>
-      <div class="hud-title">Permanent Rewards (Milestones)</div>
-      <p class="overlay-hint">Total Completed: <strong>{{totalCompletedMissions}}</strong> Missions</p>
+    <button class="close-btn" (click)="toggleRewardsOverlay()">❌</button>
+    <div class="hud-title">Permanent Rewards (Milestones)</div>
+    <p class="overlay-hint">Total Completed: <strong>{{totalCompletedMissions}}</strong> Missions</p>
 
-      <div class="reward-list-scroll">
-          <div *ngFor="let reward of rewards" class="reward-item">
-              <span [style.color]="reward.unlocked ? '#76ff03' : '#ffb347'">
-                  {{ reward.unlocked ? '✅' : '🔒' }} 
-                  <strong class="reward-name">{{ reward.name }}</strong> 
-              </span>
-              <span class="milestone">({{ reward.milestone }} Missions)</span>
-              <div class="effect-desc" [style.color]="reward.unlocked ? '#bdf7c9' : 'var(--muted)'">
-                 {{ reward.unlocked ? reward.effect : reward.description }}
-              </div>
-          </div>
+    <div class="reward-list-scroll">
+      <div *ngFor="let reward of rewards" class="reward-item">
+        <span [style.color]="reward.unlocked ? '#76ff03' : '#ffb347'">
+          {{ reward.unlocked ? '✅' : '🔒' }}
+          <strong class="reward-name">{{ reward.name }}</strong>
+        </span>
+        <span class="milestone">({{ reward.milestone }} Missions)</span>
+        <div class="effect-desc" [style.color]="reward.unlocked ? '#bdf7c9' : 'var(--muted)'">
+          {{ reward.unlocked ? reward.effect : reward.description }}
+        </div>
       </div>
+    </div>
   </div>
       <div *ngIf="showAttack && !attackGifUrl" class="popup">{{ attackText }}</div>
 
-    <button class="rewards-btn fixed-btn" (click)="toggleRewardsOverlay()">
-      📜 Rewards
-    </button>
-    </div>
+  <button class="rewards-btn fixed-btn" (click)="toggleRewardsOverlay()">
+    📜 Rewards
+  </button>
+</div>

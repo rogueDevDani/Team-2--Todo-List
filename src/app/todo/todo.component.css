@@ -39,7 +39,7 @@
     margin-bottom:12px; 
 }
 .title-row h2 { 
-    background-image: linear-gradient(#F66C2D, #E7E419); /* Same grey-ish colur but made it a bit darker for visibility*/
+    background-image: linear-gradient(#F66C2D, #E7E419); 
     background-clip: text;
     color: transparent;
     -webkit-text-stroke-width: 1px;
@@ -118,8 +118,8 @@
 }
 .fighters-row .versus {
     color: #666;
-    font-size: 12px;
-    align-self: flex-end;
+    font-size: 70px;
+    align-self: cen;
     margin: 0 10px;
 }
 
@@ -173,11 +173,10 @@
 }
 
 /* Reset/New Game Button Styles */
-/* === CUSTOM BUTTONS USING button.png BACKGROUND === */
-.small-btn {
+.battle-actions button {
   background: url("../../assets/button.png") no-repeat center center / cover;
   border: none;
-  color: white;
+  color:  #082C8C;
   font-weight: bold;
   font-size: 14px;
   width: 200px;        /* adjust button width */
@@ -186,7 +185,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  text-shadow: 3px 2px 2px #4691CC;
   box-shadow: none;    /* removes shadow */
   transition: transform 0.2s ease;
 }
@@ -194,12 +193,11 @@
 .small-btn:hover {
   transform: scale(1.05);
 }
-
-/* optional: slightly different look for danger button */
-.small-btn.danger {
-  filter: hue-rotate(-20deg) brightness(1.1);
+.battle-actions button:active{ /*animation for when button is pressed*/
+    width: 190px;
+    font-size: 12px;
+    color: #F66C2D;
 }
-
 
 /* attack animation area */
 .attack-area { display:flex; gap:12px; align-items:center; justify-content:center; margin:8px 0; }
@@ -280,6 +278,10 @@ label{
     color: #4691CC;
     font-weight: bold;
     background-color: #292932
+}
+.form-row .btn:active{ /*animation for when button is pressed*/
+  box-shadow: 0 5px #19234b;
+  transform: translateY(3px);
 }
 /* -----Form Row End ----- */
 
