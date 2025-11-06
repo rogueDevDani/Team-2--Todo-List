@@ -1,7 +1,11 @@
 /*Custom Font*/
 @font-face {
-    font-family: PixelSans;
-    src: url(assets/PixelifySans-VariableFont_wght.ttf);
+    font-family: Fixedayz;
+    src: url(assets/ofont.ru_Fixedsys.ttf);
+}
+@font-face {
+    font-family: NinjaNaruto;
+    src: url(assets/NinjaNaruto-YOn4.ttf);
 }
 /* Define color variables (palette) */
 :root {

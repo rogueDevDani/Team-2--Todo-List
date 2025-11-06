@@ -1,7 +1,7 @@
 <div class="app-wrap">
     <div class="card todo-box">
         <div class="title-row">
-      <img class="leaf" src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Leaf_Village_Symbol.svg" alt="Hidden Leaf Symbol" />
+      <img class="leaf" src="" alt="Hidden Leaf Symbol" /> <!--Fix: NEED TO ADD HIDDEN LEAF SYMBOL BEFORE-->
       <h2>Naruto Mission Tracker</h2>
     </div>
 
@@ -11,7 +11,14 @@
               🔥 STREAK: <strong>{{currentStreak}}</strong>
           </div>
       
-            <div class="level-display">Level {{levelIndex + 1}}</div>
+          <div class="level-display">
+            <div class="scroll-image">
+              <img src="scroll_small.png" alt="Scroll Image">
+            </div>
+            <div class="level-number">
+              Level {{levelIndex + 1}}
+            </div>
+          </div>
       
 <div class="battle-container">
   <!-- Naruto -->

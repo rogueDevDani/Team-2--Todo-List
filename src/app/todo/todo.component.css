@@ -9,7 +9,7 @@
 
 *{
     box-sizing: border-box;
-    font-family: PixelSans, Arial;
+    font-family: Fixedayz, Arial;
 }
 
 /* app-wrap narrow centered */
@@ -17,7 +17,7 @@
 
 /* main box */
 .todo-box {
-    background:#eaeaea9d; 
+    background:#eaeaea6f; 
     backdrop-filter: none; /* Removed blur */
     border-radius: 14px;
     padding: 18px;
@@ -39,20 +39,21 @@
     margin-bottom:12px; 
 }
 .title-row h2 { 
-    color: #202027; /* Same grey-ish colur but made it a bit darker for visibility*/
+    background-image: linear-gradient(#F66C2D, #E7E419); /* Same grey-ish colur but made it a bit darker for visibility*/
+    background-clip: text;
+    color: transparent;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #F0EBDF;
     margin:0; 
+    font-family: NinjaNaruto;
     font-size:50px; 
+    
 }
 .title-row .leaf { 
     /* HIDE THE LEAF ICON IF IT'S STILL IN THE HTML */
     display: none; 
 }
-.title-row::before{ /* Place holder until we can figure out how to show images*/
-    content: "🍃";
-    font-size: 50px;
-    position: relative;
-    left: 55px;
-}
+
 /* NEW TUG-OF-WAR BATTLE STYLES (adapted for dark text) */
 .battle { 
     display:flex; 
@@ -62,12 +63,35 @@
     margin-bottom:12px; 
     position: relative; /* Added for streak counter */
 }
-.level-display {
-    font-size: 25px;
-    font-weight: 600;
-    color: #F66C2D; 
-    text-shadow: none;
-    margin-bottom: 4px;
+.level-display{
+    display: grid;
+}
+
+.level-display .scroll-image{
+    grid-row: 1;
+    grid-column: 1;
+    img{
+        width: 200%;
+        height: 80px;
+        margin: 0;
+        border: none;
+        position: relative;
+        left: -150px;
+        top: 120px;
+    }   
+}
+
+.level-display .level-number{
+    grid-row: 1;
+    grid-column: 1;
+    font-size: 30px;
+    text-shadow: 5px 4px 3px rgba(60, 60, 60, 0.527);
+    color: #843f1f;
+    position: relative;
+    top: 115px;
+    left: 10px;
+    align-self: center;
+    justify-self: center;
 }
 .fighters-row {
     display: flex;
@@ -100,8 +124,8 @@
 }
 
 /* Single Progress Bar Style */
-.single-hp-bar { 
-    background: #eee; /* Light background for the bar track */
+.hp-wrapper .single-hp-bar { 
+    background: #ffffff; /* Light background for the bar track */
     border-radius:6px; 
     height:14px; 
     width:90%; 
@@ -109,29 +133,36 @@
     box-shadow: 0 0 5px rgba(0,0,0,0.1); 
     position: relative;
     border: 1px solid rgba(0,0,0,0.1);
+    left: 40px;
 }
-.hp-fill.blue { 
-    /* Keep the gradient for the fill but ensure it looks good */
-    background: linear-gradient(90deg, #bc671d, #e53935); 
-    height:100%; 
-    transition: width 350ms ease; 
+
+.hp-wrapper .hp-fill.blue { 
+    background: linear-gradient(90deg,rgba(246, 108, 45, 1) 0%, rgba(186, 106, 80, 1) 40%, rgba(70, 145, 204, 1) 79%, rgba(8, 44, 140, 1) 100%);
+    transition: width 450ms ease; 
     box-shadow: none; 
-    float: left; 
+    float:left; 
 }
-.hp-readout {
-    display: flex;
-    justify-content: space-between;
-    width: 90%;
-    margin-top: 4px;
-    font-size: 12px;
-    font-weight: 600;
+.naruto-progress { /* FIX: NEED to make it so that the readouts are on top of the bar*/
+    position: relative;
+    margin: 0;
+    float: left;
+    left: 150px;
+    top: -45px;
+    font-size: 55px;
+    font-weight: 100;
+    color: #ffffffa3;
 }
-.naruto-progress {
-    color: var(--orange);
+.opponent-progress{
+    position: relative;
+    margin: 0;
+    float: right;
+    left: -30px;
+    top: -45px;
+    font-size: 60px;
+    font-weight: 100;
+    color: #ff0000a5;
 }
-.opponent-progress {
-    color: var(--red); 
-}
+
 /* END NEW TUG-OF-WAR STYLES */
 
 /* Reset/New Game Button Group */
