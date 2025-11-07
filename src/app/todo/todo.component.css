@@ -43,11 +43,12 @@
     background-image: linear-gradient(#F66C2D, #E7E419); 
     background-clip: text;
     color: transparent;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #F0EBDF;
+    -webkit-text-stroke: 1px #F0EBDF;
     margin:0; 
     font-family: NinjaNaruto;
     font-size:50px; 
+    font-style: italic;
+    word-spacing: 5px;
     
 }
 .title-row .leaf { 
@@ -81,15 +82,19 @@
         position: relative;
         left: -150px;
         top: 120px;
-    }   
+    }
+    filter: brightness(0.9) contrast(0.8);
 }
 
 .level-display .level-number{
     grid-row: 1;
     grid-column: 1;
     font-size: 30px;
-    text-shadow: 5px 4px 3px rgba(60, 60, 60, 0.527);
-    color: #843f1f;
+    color: #8c4614; 
+    text-shadow: 
+        1px 1px 0px rgba(139, 69, 19, 0.6), /* Brown shadow */
+        0 0 8px rgba(255, 180, 100, 0.3),   /* Subtle warm glow */
+        1px 1px 2px rgba(249, 249, 249, 0.5); /* Depth shadow */
     position: relative;
     top: 115px;
     left: 10px;
@@ -142,7 +147,7 @@
 }
 
 .fighter-label { /* Naruto label*/
-  background-color: rgba(21, 101, 192, 0.85); /* blue with slight transparency */
+  background-color: #1c3372; /* blue with slight transparency */
   color: white;
   font-weight: bold;
   font-size: 16px;
@@ -161,7 +166,7 @@
   left: 30px;
 }
 .fighter-box_right-fighter .fighter-label { /*Opponent label*/
-  background-color: rgba(21, 101, 192, 0.85); /* blue with slight transparency */
+  background-color: #1c3372; /* blue with slight transparency */
   color: white;
   font-weight: bold;
   font-size: 16px;
@@ -180,53 +185,85 @@
   left: 100px;
 }
 
-.fighters-row .versus {
-    color: #666;
-    font-size: 70px;
-    align-self: cen;
-    margin: 0 10px;
+.battle-container .versus {
+    font-family: NinjaNaruto;
+    color: #ffd580;
+    text-shadow: 
+    0 0 8px rgba(255, 180, 100, 0.6),    /* Muted orange glow */
+    0 0 15px rgba(255, 160, 80, 0.4),     /* Softer outer glow */
+    3px 3px 0px rgba(139, 69, 19, 0.8),   /* Brown outline for depth */
+    4px 4px 12px rgba(0, 0, 0, 0.7);      /* Shadow */
+    font-size: 50px;
+    font-style: italic;
+    position: relative;
+    left: -200px;
+    top: 20px;  
 }
 
 /*--------Figthers Style END---------*/
 
-/* Single Progress Bar Style */
+/* Progress Bar Style */
+
+.hp-wrapper {
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 600px; 
+  min-width: 400px; 
+  margin-top: 100px;
+}
+
 .hp-wrapper .single-hp-bar { 
     background: #d0d0d03c; /* Light background for the bar track */
-    border-radius:6 px; 
+    border-radius:6px; 
     height:14px; 
-    width:127%; 
+    width:167%; 
     overflow:hidden; 
     box-shadow: 0 0 5px rgba(0,0,0,0.1); 
+    border: 2px solid rgba(163, 163, 163, 0.427);
     position: relative;
-    border: 1px solid rgba(0,0,0,0.1);
-    left: 40px;
+    left: 100px;
 }
 
 .hp-wrapper .hp-fill.blue { 
-    background: linear-gradient(90deg,rgba(246, 108, 45, 1) 0%, rgba(186, 106, 80, 1) 40%, rgba(70, 145, 204, 1) 79%, rgba(8, 44, 140, 1) 100%);
+    background: linear-gradient(90deg, 
+    rgba(255, 65, 54, 1) 0%,      
+    rgba(255, 133, 27, 1) 40%,    
+    rgba(66, 133, 244, 1) 79%,    
+    rgb(85, 175, 154) 100%);
     transition: width 450ms ease; 
     box-shadow: none; 
     float:left; 
 }
-.naruto-progress { /* FIX: NEED to make it so that the readouts are on top of the bar*/
-    position: relative;
+.naruto-progress { 
     margin: 0;
     float: left;
-    left: 150px;
-    top: -45px;
     font-size: 60px;
     font-weight: 100;
-    color: #be5227;
+    color: #cb8757f2;
+    text-shadow: 
+    2px 2px 0px #000000,
+    -1px -1px 0px #1a1a1a,
+    0 0 8px rgba(0,0,0,0.9);
+    position: relative;
+    top: -45px;
+    left: 60px;
 }
 .opponent-progress{
-    position: relative;
     margin: 0;
     float: right;
-    left: -30px;
-    top: -45px;
     font-size: 60px;
     font-weight: 100;
-    color: #4a85a0;
+    color: #6177c7cd;
+    text-shadow: 
+    2px 2px 0px #000000,
+    -1px -1px 0px #1a1a1a,
+    0 0 8px rgba(0,0,0,0.9);
+    position: relative;
+    top: -45px;
+    left: 140px;
 }
 
 /* END NEW TUG-OF-WAR STYLES */
@@ -242,16 +279,17 @@
 .battle-actions button {
   background: url("../../assets/button.png") no-repeat center center / cover;
   border: none;
-  color:  #082C8C;
-  font-weight: bold;
-  font-size: 14px;
-  width: 200px;        /* adjust button width */
+  width: 225px;        /* adjust button width */
   height: 50px;        /* adjust button height */
+  filter: brightness(0.9) contrast(0.8); /*Making buttons darker*/
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-shadow: 3px 2px 2px #4691CC;
+  color:#1e3986;
+  font-weight:600;
+  font-size: 16px;
+  text-shadow: 1px 3px 1px #d2d2d2;
   box-shadow: none;    /* removes shadow */
   transition: transform 0.2s ease;
 }
@@ -259,10 +297,15 @@
 .small-btn:hover {
   transform: scale(1.05);
 }
+.battle-actions button:hover{
+    color: #0d14dd;
+    filter: brightness(1.0) contrast(0.7);
+}
 .battle-actions button:active{ /*animation for when button is pressed*/
     width: 190px;
-    font-size: 12px;
+    font-size: 13px;
     color: #F66C2D;
+    filter: brightness(1.0);
 }
 
 /* attack animation area */
@@ -319,7 +362,7 @@
 }
 .form-row .date-input-field{
     background-color: #363641;
-    color: #F0EBDF;
+    color: white;
     font-size: 14px;
 }
 
@@ -333,7 +376,7 @@ label{
 .form-row .btn{
     border:#082C8C 4px outset;
     background-color: #F0EBDF;
-    font-size: 14px;
+    font-size: 15px;
     height: 38px;
     border-radius: 20px;
     color:#082C8C;
@@ -376,7 +419,7 @@ label{
 .left { display:flex; gap:10px; align-items:center; flex:1; }
 .meta .name { font-weight:600; }
 .meta .name.done { text-decoration:line-through; opacity:0.7; }
-.small { font-size:12px; color:#666; }
+.small { font-size:13px; color:#272626; }
 
 /* right actions */
 .right { display:flex; align-items:center; gap:8px; }
@@ -511,12 +554,12 @@ label{
     z-index: 1001;
 }
 
-/* === FIXED REWARDS BUTTON STYLE === */
+/* -----FIXED REWARDS BUTTON STYLE----- */
 .rewards-btn {
     position: fixed;
     bottom: 22px;
     right: 22px;
-    background: var(--bg); /* Dark background */
+    background: #24242c; /* Dark background */
     color: #fff;
     padding: 10px 15px;
     border-radius: 50px;
@@ -575,42 +618,4 @@ max-width: calc(100% - 20px);
     flex-basis: calc(50% - 4px);
     width: auto;
 }
-}
-
-/* === CENTERED HP BAR BETWEEN NAME BOXES === */
-.hp-wrapper {
-  flex: 1; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  max-width: 600px; 
-  min-width: 400px; 
-  margin-top: 100px;
-}
-
-/* HP bar style */
-.single-hp-bar {
-  background: #e0e0e0;
-  border-radius: 8px;
-  height: 18px;
-  width: 100%;
-  overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-.hp-fill.blue {
-  background: linear-gradient(90deg, #ff7b00, #e53935);
-  height: 100%;
-  transition: width 350ms ease;
-}
-
-.hp-readout {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  font-size: 14px;
-  font-weight: bold;
-  color: #363641;
-  margin-top: 5px;
 }
