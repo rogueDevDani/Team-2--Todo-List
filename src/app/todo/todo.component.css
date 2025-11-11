@@ -1,15 +1,15 @@
 /* Define color variables (palette) */
 :root {
-    --orange: #ff7b00; /* For progress, streak, etc. */
+    --orange: #F66C2D; /* For progress, streak, etc. */
     --red: #e53935; /* For opponent progress/danger */
-    --blue: #1565c0; /* For buttons/status */
-    --bg: #071126; /* Dark text/primary color (originally blue) */
-    --app-bg-color: #887354; /* Bright orange background color (fallback) */
+    --blue: #4691CC; /* For buttons/status */
+    --bg: #363641; /* Dark text/primary color (originally blue) */
+    --app-bg-color: #082C8C; /* Dark blue background color (fallback) */
 }
 
 *{
     box-sizing: border-box;
-    font-family: PixelSans, Arial;
+    font-family: Fixedayz, Arial;
 }
 
 /* app-wrap narrow centered */
@@ -17,13 +17,14 @@
 
 /* main box */
 .todo-box {
-    background:#eaeaea9d; 
+    background:#21212166; 
     backdrop-filter: none; /* Removed blur */
-    border-radius: 14px;
+    border-radius: 30px;
     padding: 18px;
     min-width: 175%;
     border: 1px solid rgba(0,0,0,0.1);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    box-shadow: 25px 20px 30px #82828288,
+             -10px -10px 20px #934825bd;
     position: relative;
     right: 250px; 
     /* ADJUSTED MARGIN: Since the HUD is gone, this margin centers the todo box */
@@ -39,20 +40,22 @@
     margin-bottom:12px; 
 }
 .title-row h2 { 
-    color: #2a2a32; /* Same grey-ish colur but made it a bit darker for visibility*/
+    background-image: linear-gradient(#F66C2D, #E7E419); 
+    background-clip: text;
+    color: transparent;
+    -webkit-text-stroke: 1px #F0EBDF;
     margin:0; 
+    font-family: NinjaNaruto;
     font-size:50px; 
+    font-style: italic;
+    word-spacing: 5px;
+    
 }
 .title-row .leaf { 
     /* HIDE THE LEAF ICON IF IT'S STILL IN THE HTML */
     display: none; 
 }
-.title-row::before{ /* Place holder until we can figure out how to show images*/
-    content: "🍃";
-    font-size: 50px;
-    position: relative;
-    left: 55px;
-}
+
 /* NEW TUG-OF-WAR BATTLE STYLES (adapted for dark text) */
 .battle { 
     display:flex; 
@@ -62,76 +65,207 @@
     margin-bottom:12px; 
     position: relative; /* Added for streak counter */
 }
-.level-display {
-    font-size: 25px;
-    font-weight: 600;
-    color: #F66C2D; 
-    text-shadow: none;
-    margin-bottom: 4px;
-}
-.fighters-row {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 90%;
-    font-weight: 700;
-    font-size: 16px;
-    color: var(--bg); /* Dark text */
-    margin-bottom: 4px;
-}
-.fighters-row .fighter-name{
-    background-color: #1565c0;
-    box-shadow: none;
 
-    
-}
-.fighters-row .fighter-name img{
-    color: red;
+/* Level Display Style*/
+.level-display{
+    display: grid;
 }
 
-.fighters-row .fighter-name:last-child {
-    text-align: right;
-}
-.fighters-row .versus {
-    color: #666;
-    font-size: 12px;
-    align-self: flex-end;
-    margin: 0 10px;
+.level-display .scroll-image{
+    grid-row: 1;
+    grid-column: 1;
+    img{
+        width: 200%;
+        height: 80px;
+        margin: 0;
+        border: none;
+        position: relative;
+        left: -150px;
+        top: 120px;
+    }
+    filter: brightness(0.9) contrast(0.8);
 }
 
-/* Single Progress Bar Style */
-.single-hp-bar { 
-    background: #eee; /* Light background for the bar track */
+.level-display .level-number{
+    grid-row: 1;
+    grid-column: 1;
+    font-size: 30px;
+    color: #8c4614; 
+    text-shadow: 
+        1px 1px 0px rgba(139, 69, 19, 0.6), /* Brown shadow */
+        0 0 8px rgba(255, 180, 100, 0.3),   /* Subtle warm glow */
+        1px 1px 2px rgba(249, 249, 249, 0.5); /* Depth shadow */
+    position: relative;
+    top: 115px;
+    left: 10px;
+    align-self: center;
+    justify-self: center;
+}
+/*-------Level Display Style END-------*/
+
+/* === BATTLE CONTAINER STYLING === */
+.battle-container {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* center everything evenly */
+  gap: 60px; /* more space between the two name boxes */
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  flex-wrap: wrap; /* ensures it adapts on smaller screens */
+}
+
+/* === FIGHTER NAME BOXES (text only inside blue box) === */
+.fighter-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+.battle-container .fighter-box_left-fighter img {
+  width: 180px;             /* adjust as needed */
+  height: auto;
+  image-rendering: pixelated; /* keeps the pixel style */
+  margin-bottom: 6px;
+}
+
+.battle-container .fighter-box_right-fighter img {
+  width: 280px;
+  image-rendering: pixelated; /* keeps the pixel style */
+  position: relative;
+  left: 30px;
+  top: -10px;
+}
+
+/* Optional hover animation for fun */
+.fighter-img:hover {
+  transform: translateY(-10px) scale(1.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+.fighter-label { /* Naruto label*/
+  background-color: #1c3372; /* blue with slight transparency */
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 6px 20px;
+  text-align: center;
+  border-radius: 6px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: none; /* remove shadow */
+  width: 120px;
+  height: 40 px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  left: 30px;
+}
+.fighter-box_right-fighter .fighter-label { /*Opponent label*/
+  background-color: #1c3372; /* blue with slight transparency */
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 6px 20px;
+  text-align: center;
+  border-radius: 6px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: none; /* remove shadow */
+  width: 120px;
+  height: 40 px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  left: 100px;
+}
+
+.battle-container .versus {
+    font-family: NinjaNaruto;
+    color: #ffd580;
+    text-shadow: 
+    0 0 8px rgba(255, 180, 100, 0.6),    /* Muted orange glow */
+    0 0 15px rgba(255, 160, 80, 0.4),     /* Softer outer glow */
+    3px 3px 0px rgba(139, 69, 19, 0.8),   /* Brown outline for depth */
+    4px 4px 12px rgba(0, 0, 0, 0.7);      /* Shadow */
+    font-size: 50px;
+    font-style: italic;
+    position: relative;
+    left: -200px;
+    top: 20px;  
+}
+
+/*--------Figthers Style END---------*/
+
+/* Progress Bar Style */
+
+.hp-wrapper {
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 600px; 
+  min-width: 400px; 
+  margin-top: 100px;
+}
+
+.hp-wrapper .single-hp-bar { 
+    background: #d0d0d03c; /* Light background for the bar track */
     border-radius:6px; 
     height:14px; 
-    width:90%; 
+    width:167%; 
     overflow:hidden; 
     box-shadow: 0 0 5px rgba(0,0,0,0.1); 
+    border: 2px solid rgba(163, 163, 163, 0.427);
     position: relative;
-    border: 1px solid rgba(0,0,0,0.1);
+    left: 100px;
 }
-.hp-fill.blue { 
-    /* Keep the gradient for the fill but ensure it looks good */
-    background: linear-gradient(90deg, #bc671d, #e53935); 
-    height:100%; 
-    transition: width 350ms ease; 
+
+.hp-wrapper .hp-fill.blue { 
+    background: linear-gradient(90deg, 
+    rgba(255, 65, 54, 1) 0%,      
+    rgba(255, 133, 27, 1) 40%,    
+    rgba(66, 133, 244, 1) 79%,    
+    rgb(85, 175, 154) 100%);
+    transition: width 450ms ease; 
     box-shadow: none; 
-    float: left; 
+    float:left; 
 }
-.hp-readout {
-    display: flex;
-    justify-content: space-between;
-    width: 90%;
-    margin-top: 4px;
-    font-size: 12px;
-    font-weight: 600;
+.naruto-progress { 
+    margin: 0;
+    float: left;
+    font-size: 60px;
+    font-weight: 100;
+    color: #cb8757f2;
+    text-shadow: 
+    2px 2px 0px #000000,
+    -1px -1px 0px #1a1a1a,
+    0 0 8px rgba(0,0,0,0.9);
+    position: relative;
+    top: -45px;
+    left: 60px;
 }
-.naruto-progress {
-    color: var(--orange);
+.opponent-progress{
+    margin: 0;
+    float: right;
+    font-size: 60px;
+    font-weight: 100;
+    color: #6177c7cd;
+    text-shadow: 
+    2px 2px 0px #000000,
+    -1px -1px 0px #1a1a1a,
+    0 0 8px rgba(0,0,0,0.9);
+    position: relative;
+    top: -45px;
+    left: 140px;
 }
-.opponent-progress {
-    color: var(--red); 
-}
+
 /* END NEW TUG-OF-WAR STYLES */
 
 /* Reset/New Game Button Group */
@@ -142,20 +276,20 @@
 }
 
 /* Reset/New Game Button Styles */
-/* === CUSTOM BUTTONS USING button.png BACKGROUND === */
-.small-btn {
-  background: url('../../assets/button.png') no-repeat center center / cover;
+.battle-actions button {
+  background: url("../../assets/button.png") no-repeat center center / cover;
   border: none;
-  color: white;
-  font-weight: bold;
-  font-size: 14px;
-  width: 200px;        /* adjust button width */
+  width: 225px;        /* adjust button width */
   height: 50px;        /* adjust button height */
+  filter: brightness(0.9) contrast(0.8); /*Making buttons darker*/
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  color:#1e3986;
+  font-weight:600;
+  font-size: 16px;
+  text-shadow: 1px 3px 1px #d2d2d2;
   box-shadow: none;    /* removes shadow */
   transition: transform 0.2s ease;
 }
@@ -163,10 +297,15 @@
 .small-btn:hover {
   transform: scale(1.05);
 }
-
-/* optional: slightly different look for danger button */
-.small-btn.danger {
-  filter: hue-rotate(-20deg) brightness(1.1);
+.battle-actions button:hover{
+    color: #0d14dd;
+    filter: brightness(1.0) contrast(0.7);
+}
+.battle-actions button:active{ /*animation for when button is pressed*/
+    width: 190px;
+    font-size: 13px;
+    color: #F66C2D;
+    filter: brightness(1.0);
 }
 
 
@@ -188,12 +327,12 @@
     flex:2; 
     padding:8px 10px; 
     border-radius:8px; 
-    border:3px solid rgba(0,0,0,0.15); 
+    border:1px solid white; 
     background: #082b8c9a; 
     color:white; 
 }
 .form-row input[type="text"]:hover{
-    background-color: #576791;
+    background-color: #3c4762;
 }
 ::placeholder{
     color: white;
@@ -203,13 +342,13 @@
 .form-row select { 
     padding:8px; 
     border-radius:8px; 
-    border:1px solid rgba(0,0,0,0.15); 
+    border:1px solid white; 
     background:#e77844; 
     color:rgb(255, 255, 255); 
 }
 .form-row option[value="low"], option[value="medium"], option[value="high"]{
     background-color: #F0EBDF;
-    color: black;
+    color: rgb(255, 153, 0);
 }
 
 /*Due Date Selction*/
@@ -217,27 +356,28 @@
 .form-row input[type="date"] {
     padding: 8px 10px; 
     border-radius: 5px; 
-    border: 1px solid rgba(0,0,0,0.15);   
+    border: 1px solid white;   
     /* Set a specific width to fit nicely, replaces the complex icon approach */
     min-width: 150px; 
     cursor: pointer;
 }
 .form-row .date-input-field{
     background-color: #363641;
-    color: #F0EBDF;
+    color: white;
     font-size: 14px;
 }
 
 /*Lable for Priority and Due date*/
 label{
     font-weight: 500;
+    color: #F0EBDF;
 }
 
 /*Add Mission Button*/
 .form-row .btn{
     border:#082C8C 4px outset;
     background-color: #F0EBDF;
-    font-size: 14px;
+    font-size: 15px;
     height: 38px;
     border-radius: 20px;
     color:#082C8C;
@@ -249,6 +389,10 @@ label{
     color: #4691CC;
     font-weight: bold;
     background-color: #292932
+}
+.form-row .btn:active{ /*animation for when button is pressed*/
+  box-shadow: 0 5px #19234b;
+  transform: translateY(3px);
 }
 /* -----Form Row End ----- */
 
@@ -264,7 +408,7 @@ label{
     display:flex; 
     justify-content:space-between; 
     align-items:center; 
-    background: #fcfcfc; /* Very light background for tasks */
+    background: #c2c1c19c; /* Very light background for tasks */
     padding:10px; 
     border-radius:8px; 
     margin-bottom:8px; 
@@ -272,11 +416,11 @@ label{
     transition: background 200ms ease; 
     color: var(--bg);
 }
-.task:hover { background: #f0f0f0; }
+.task:hover { background: #9b9b9b; }
 .left { display:flex; gap:10px; align-items:center; flex:1; }
 .meta .name { font-weight:600; }
 .meta .name.done { text-decoration:line-through; opacity:0.7; }
-.small { font-size:12px; color:#666; }
+.small { font-size:13px; color:#272626; }
 
 /* right actions */
 .right { display:flex; align-items:center; gap:8px; }
@@ -411,12 +555,12 @@ label{
     z-index: 1001;
 }
 
-/* === FIXED REWARDS BUTTON STYLE === */
+/* -----FIXED REWARDS BUTTON STYLE----- */
 .rewards-btn {
     position: fixed;
     bottom: 22px;
     right: 22px;
-    background: var(--bg); /* Dark background */
+    background: #24242c; /* Dark background */
     color: #fff;
     padding: 10px 15px;
     border-radius: 50px;
@@ -476,103 +620,3 @@ max-width: calc(100% - 20px);
     width: auto;
 }
 }
-
-/* === BATTLE CONTAINER STYLING === */
-.battle-container {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* center everything evenly */
-  gap: 60px; /* more space between the two name boxes */
-  margin-top: 10px;
-  margin-bottom: 20px;
-  width: 100%;
-  flex-wrap: wrap; /* ensures it adapts on smaller screens */
-}
-
-/* === FIGHTER NAME BOXES (text only inside blue box) === */
-.fighter-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: transparent;
-  box-shadow: none;
-  border: none;
-}
-
-.fighter-img {
-  width: 70px;
-  height: auto;
-  margin-bottom: 8px;
-}
-
-.fighter-label {
-  background-color: rgba(21, 101, 192, 0.85); /* blue with slight transparency */
-  color: white;
-  font-weight: bold;
-  font-size: 16px;
-  padding: 6px 20px;
-  text-align: center;
-  border-radius: 6px;
-  border: 2px solid rgba(0, 0, 0, 0.2);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
-  box-shadow: none; /* remove shadow */
-  width: 120px;
-  height: 40 px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-
-
-/* === CENTERED HP BAR BETWEEN NAME BOXES === */
-.hp-wrapper {
-  flex: 1; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  max-width: 600px; 
-  min-width: 400px; 
-  margin-top: 100px;
-}
-
-/* HP bar style */
-.single-hp-bar {
-  background: #e0e0e0;
-  border-radius: 8px;
-  height: 18px;
-  width: 100%;
-  overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-.hp-fill.blue {
-  background: linear-gradient(90deg, #ff7b00, #e53935);
-  height: 100%;
-  transition: width 350ms ease;
-}
-
-.hp-readout {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  font-size: 14px;
-  font-weight: bold;
-  color: #363641;
-  margin-top: 5px;
-}
-/* Remove the shadowy white background behind Naruto and Mizuki */
-.fighters-row {
-  background: transparent !important;
-  box-shadow: none !important;
-  border: none !important;
-}
-
-/* Also clear any inner container layer that adds that white haze */
-.fighters-row .fighter-name {
-  background: transparent !important;
-  box-shadow: none !important;
-  border: none !important;
-}
-

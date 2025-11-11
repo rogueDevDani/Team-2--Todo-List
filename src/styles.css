@@ -1,7 +1,11 @@
 /*Custom Font*/
 @font-face {
-    font-family: PixelSans;
-    src: url(assets/PixelifySans-VariableFont_wght.ttf);
+    font-family: Fixedayz;
+    src: url(assets/ofont.ru_Fixedsys.ttf);
+}
+@font-face {
+    font-family: NinjaNaruto;
+    src: url(assets/NinjaNaruto-YOn4.ttf);
 }
 /* Define color variables (palette) */
 :root {
@@ -21,7 +25,7 @@ html, body {
   
   background-image: 
   linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-  url(assets/hokage_office-large.png) !important;
+  url(assets/hokage_office.jpg) !important;
   
   background-size: cover !important;/* Scale the image to cover the entire page */
   background-repeat: no-repeat !important; /* Prevent the image from tiling */
