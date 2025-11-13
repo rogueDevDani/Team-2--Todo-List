@@ -71,36 +71,34 @@
     display: grid;
 }
 
-.level-display .scroll-image{
-    grid-row: 1;
-    grid-column: 1;
-    img{
-        width: 200%;
-        height: 80px;
-        margin: 0;
-        border: none;
-        position: relative;
-        left: -150px;
-        top: 120px;
-    }
-    filter: brightness(0.9) contrast(0.8);
+/* === Scroll image behind the level text === */
+.scroll-img {
+  position: absolute;
+  top: 0;
+  left: 12%;
+  width: 75%;
+  height: 42%;
+  object-fit: contain;
+  z-index: 1; /* scroll behind text */
+  filter: brightness(0.9) contrast(0.8);
 }
 
-.level-display .level-number{
-    grid-row: 1;
-    grid-column: 1;
-    font-size: 30px;
-    color: #8c4614; 
-    text-shadow: 
-        1px 1px 0px rgba(139, 69, 19, 0.6), /* Brown shadow */
-        0 0 8px rgba(255, 180, 100, 0.3),   /* Subtle warm glow */
-        1px 1px 2px rgba(249, 249, 249, 0.5); /* Depth shadow */
-    position: relative;
-    top: 115px;
-    left: 10px;
-    align-self: center;
-    justify-self: center;
+/* === Level text overlay === */
+.level-number {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2; /* text on top of scroll */
+  font-size: 28px;
+  font-weight: bold;
+  color: #8c4614;
+  text-shadow:
+    1px 1px 2px rgba(0, 0, 0, 0.6),
+    0 0 8px rgba(255, 180, 100, 0.3);
+  white-space: nowrap; /* keeps "Level 10" on one line */
 }
+
 /*-------Level Display Style END-------*/
 
 /* === BATTLE CONTAINER STYLING === */
@@ -133,12 +131,17 @@
 }
 
 .battle-container .fighter-box_right-fighter img {
-  width: 280px;
-  image-rendering: pixelated; /* keeps the pixel style */
+  width: 20vw;       /* 20% of viewport width */
+  height: 20vw;      /* same ratio */
+  max-width: 280px;  /* won’t get too big */
+  max-height: 280px;
+  object-fit: contain;
+  image-rendering: pixelated;
   position: relative;
   left: 30px;
   top: -10px;
 }
+
 
 /* Optional hover animation for fun */
 .fighter-img:hover {

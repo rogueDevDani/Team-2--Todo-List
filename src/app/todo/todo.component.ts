@@ -453,4 +453,9 @@ export class TodoComponent implements OnInit {
       this.rewards = DEFAULT_REWARDS;
     }
   }
+  //to switch the images on left when villian switches
+get currentOpponentImage(): string {
+  const opponentName = this.currentOpponentName.toLowerCase();
+  return `/${opponentName}_sprite.png`;
+}
 }

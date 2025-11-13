@@ -14,15 +14,11 @@
         🔥 STREAK: <strong>{{currentStreak}}</strong>
       </div>
       
-      <!--Level Display-->
-      <div class="level-display">
-        <div class="scroll-image">
-          <img src="scroll_small.png" alt="Scroll Image">
-        </div>
-        <div class="level-number">
-          Level {{levelIndex + 1}}
-        </div>
-      </div>
+<div class="level-display">
+  <img src="scroll_small.png" alt="Scroll Image" class="scroll-img">
+  <div class="level-number">Level {{levelIndex + 1}}</div>
+</div>
+
     
       <!--Player/ oppenent battle row-->
       <div class="battle-container">
@@ -47,8 +43,8 @@
 
         <!-- Opponent -->
         <div class="fighter-box_right-fighter">
-          <img src="mizuki_sprite.png" alt="Mizuki" class="fighter-img">
-          <div class="fighter-label">{{currentOpponentName}}</div> <!--FIX: Change Sprites with opponents-->
+          <img [src]="currentOpponentImage" [alt]="currentOpponentName" class="fighter-img"> <!--changes opponent's image when name is changed-->
+          <div class="fighter-label">{{currentOpponentName}}</div> 
         </div>
       </div>
 
