@@ -1,28 +1,31 @@
+// server.js (or app.js)
+
 const express = require('express');
-const cors = require('cors');
-const pool = require('./dbpool');
+const cors = require('cors'); // <--- 1. Import CORS
+require('dotenv').config(); 
 
 const app = express();
-app.use(cors());
+const port = process.env.PORT || 5000;
+
+// Essential: Middleware for reading JSON data from POST requests
 app.use(express.json());
 
-// TEST ENDPOINT
-app.get('/', (req, res) => {
-    res.send("Backend is running!");
-});
+// 2. Configure CORS middleware (The Fix!)
+// Explicitly allow requests only from your frontend URL
+const frontendURL = 'http://localhost:4200'; 
 
-// Example CRUD endpoint (READ)
-app.get('/api/items', async (req, res) => {
-    try {
-        const result = await pool.query("SELECT * FROM items");
-        res.json(result.rows);
-    } catch (err) {
-        console.error(err);
-        res.status(500).send("Server error");
-    }
-});
+app.use(cors({
+    // Set the specific origin to allow
+    origin: frontendURL, 
+    // You can also list the methods you allow
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+    // Necessary if you use cookies or authorization headers
+    credentials: true 
+}));
 
-const port = 3000;
+// ... Your routes go here (e.g., app.post('/todos', ...)
+
 app.listen(port, () => {
-    console.log(`Server running on port 3000`);
+    console.log(`Server running on port ${port}`);
+    // Your PostgreSQL connection check
 });
