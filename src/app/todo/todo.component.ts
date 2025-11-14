@@ -451,6 +451,7 @@ export class TodoComponent implements OnInit {
       this.level = 1;
       this.totalCompletedMissions = 0;
       this.rewards = DEFAULT_REWARDS;
+      
     }
   }
   //to switch the images on left when villian switches
