@@ -10,14 +10,12 @@ app.use(express.json());
 const pool = new Pool({
   user: "postgres",
   host: "localhost",
-  database: "taskdb",
-  password: "yourpassword",
+  database: "naruto_db",
+  password: "TODOGROUPID2", 
   port: 5432
 });
 
-/* =============================
-      TASK ENDPOINTS
-============================= */
+/* TASK ENDPOINTS */
 
 // GET ALL TASKS
 app.get('/tasks', async (req, res) => {
@@ -32,11 +30,12 @@ app.get('/tasks', async (req, res) => {
 
 // CREATE TASK
 app.post('/tasks', async (req, res) => {
-  const { title, description } = req.body;
+  const { name, priority, duedate, completed } = req.body;
+
   try {
     const result = await pool.query(
-      "INSERT INTO tasks (title, description) VALUES ($1, $2) RETURNING *",
-      [title, description]
+      "INSERT INTO tasks (name, priority, duedate, completed) VALUES ($1, $2, $3, $4) RETURNING *",
+      [name, priority, duedate, completed]
     );
     res.status(201).json(result.rows[0]);
   } catch (err) {
@@ -48,12 +47,12 @@ app.post('/tasks', async (req, res) => {
 // UPDATE TASK
 app.put('/tasks/:id', async (req, res) => {
   const { id } = req.params;
-  const { title, description } = req.body;
+  const { name, priority, duedate, completed } = req.body;
 
   try {
     const result = await pool.query(
-      "UPDATE tasks SET title = $1, description = $2 WHERE id = $3 RETURNING *",
-      [title, description, id]
+      "UPDATE tasks SET name = $1, priority = $2, duedate = $3, completed = $4 WHERE id = $5 RETURNING *",
+      [name, priority, duedate, completed, id]
     );
 
     if (result.rows.length === 0)
@@ -87,9 +86,7 @@ app.delete('/tasks/:id', async (req, res) => {
 });
 
 
-/* =============================
-      GAME STATE ENDPOINTS
-============================= */
+/* GAME STATE ENDPOINTS */
 
 const GAME_STATE_ID = 1;
 
@@ -171,9 +168,8 @@ app.post('/gamestate', async (req, res) => {
 });
 
 
-/* =============================
-      START SERVER
-============================= */
+/* START SERVER */
 app.listen(3000, () => {
   console.log("Server running on port 3000");
 });
+
