@@ -17,8 +17,12 @@
 
       <!-- Level Display -->
       <div class="level-display">
-        <img src="scroll_small.png" alt="Scroll Image" class="scroll-img">
-        <div class="level-number">Level {{levelIndex + 1}}</div>
+        <div class="scroll-image">
+          <img src="scroll_small.png" alt="Scroll Image">
+        </div>
+        <div class="level-number">
+          Level {{levelIndex + 1}}
+        </div>
       </div>
 
       <!-- Player vs Opponent -->
@@ -45,7 +49,7 @@
         <!-- Opponent -->
         <div class="fighter-box_right-fighter">
           <img [src]="currentOpponentImage" [alt]="currentOpponentName" class="fighter-img">
-          <div class="fighter-label">{{currentOpponentName}}</div> 
+          <div class="fighter-label">{{currentOpponentName}}</div>
         </div>
       </div>
 
@@ -64,12 +68,7 @@
 
     <!-- User Input Row -->
     <div class="form-row">
-      <input 
-        type="text" 
-        [(ngModel)]="newTask" 
-        placeholder="Enter your mission..." 
-        (keyup.enter)="addTask()"
-      />
+      <input type="text" [(ngModel)]="newTask" placeholder="Enter your mission..." (keyup.enter)="addTask()" />
 
       <label> Mission Rank:
         <select [(ngModel)]="priority" class="priority-select">
