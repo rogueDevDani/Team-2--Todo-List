@@ -72,12 +72,12 @@ export class TodoComponent implements OnInit {
   // --- Shop ---
   shopItems: ShopItem[] = [
   { id: 'default', displayName: 'Default Naruto', fileName: 'naruto_sprite.png', cost: 0, owned: true },
-  { id: 'sage', displayName: 'Sage Mode Naruto', fileName: 'naruto_sage_sprite.png', cost: 10 },
-  { id: 'kurama', displayName: 'Kurama Cloak Naruto', fileName: 'naruto_kurama_sprite.png', cost: 20 },
-  { id: 'hokage', displayName: 'Hokage Naruto', fileName: 'naruto_hokage_sprite.png', cost: 30 },
-  { id: 'sage_necklace', displayName: 'Sage Necklace', fileName: 'sage_necklace.png', cost: 5 },
-  { id: 'hokage_hat', displayName: 'Hokage Hat', fileName: 'hokage_hat.png', cost: 8 },
-  { id: 'anbu_mask', displayName: 'ANBU Black Ops Mask', fileName: 'anbu_mask.png', cost: 12 }
+  { id: 'sage', displayName: 'Sage Mode Naruto', fileName: 'naruto_sage_sprite.PNG', cost: 10 },
+  { id: 'kurama', displayName: 'Kurama Cloak Naruto', fileName: 'naruto_kurama_sprite.PNG', cost: 20 },
+  { id: 'hokage', displayName: 'Hokage Naruto', fileName: 'naruto_hokage_sprite.PNG', cost: 30 },
+  { id: 'sage_necklace', displayName: 'Sage Necklace', fileName: 'sage_necklace.PNG', cost: 5 },
+  { id: 'hokage_hat', displayName: 'Hokage Hat', fileName: 'hokage_hat.PNG', cost: 8 },
+  { id: 'anbu_mask', displayName: 'ANBU Black Ops Mask', fileName: 'anbu_mask.PNG', cost: 12 }
 ];
   equippedSkinId = 'default';
 
