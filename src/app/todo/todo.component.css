@@ -15,7 +15,7 @@
 /* app-wrap narrow centered */
 .app-wrap { max-width: 680px; margin: 18px auto; position:relative; }
 
-/* main box */
+/* main box styling */
 .todo-box {
     background:#21212166; 
     backdrop-filter: none; /* Removed blur */
@@ -59,7 +59,7 @@
     display:flex; 
     flex-direction: column; 
     align-items:center; 
-    gap: 8px; 
+    gap: 7px; 
     margin-bottom:12px; 
     position: relative;
 }
