@@ -251,7 +251,8 @@
 .battle-actions {
     display: flex;
     gap: 8px;
-    margin-top: 8px;
+    transform: translateY(-350px);
+
 }
 .battle-actions button {
   background: url("../../assets/button.png") no-repeat center center / cover;
@@ -292,7 +293,7 @@
 }
 
 /* form row */
-.form-row { display:flex; gap:8px; align-items:center; margin-bottom:12px; justify-content:center; }
+.form-row { display:flex; gap:8px; align-items:center; margin-bottom:12px; justify-content:center;   transform: translateY(-300px); }
 .form-row input[type="text"] { 
     flex:2; 
     padding:8px 10px; 
@@ -352,7 +353,7 @@ label{ font-weight: 500; color: #F0EBDF; }
 .form-row .btn:active{ transform: translateY(3px); }
 
 /* list */
-.list { margin-top:8px; }
+.list { transform: translateY(-280px); }
 .empty { text-align: center; color: #666; font-style: italic; padding: 20px; }
 .task { display:flex; justify-content:space-between; align-items:center; background: #c2c1c19c; padding:10px; border-radius:8px; margin-bottom:8px; border:1px solid rgba(0,0,0,0.05); transition: background 200ms ease; color: var(--bg);}
 .task:hover { background: #9b9b9b; }
