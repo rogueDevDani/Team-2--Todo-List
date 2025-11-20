@@ -355,7 +355,7 @@ export class TodoComponent implements OnInit {
       }
 
       this.currentOpponentIndex = Math.floor(Math.random() * LEVEL_OPPONENTS[this.levelIndex].length);
-      this.playerProgressPercentage = this.getWinProgressReset();
+      this.playerProgressPercentage = 50;
       this.save();
 
     } else if (this.playerProgressPercentage <= 0) {
