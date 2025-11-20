@@ -20,7 +20,7 @@
     background:#21212166; 
     backdrop-filter: none; /* Removed blur */
     border-radius: 30px;
-    padding: 18px;
+    padding: x;
     min-width: 180%;
     border: 1px solid rgba(0,0,0,0.1);
     box-shadow: 25px 20px 30px #82828288,
@@ -72,13 +72,13 @@
     grid-row: 1;
     grid-column: 1;
     img{
-        width: 200%;
+        width: 350%;
         height: 80px;
         margin: 0;
         border: none;
         position: relative;
-        left: -150px;
-        top: 190px;
+        left: -190px;
+        top: 53px;
     }
     filter: brightness(0.9) contrast(0.8);
 }
@@ -103,7 +103,7 @@
   align-items: center;
   justify-content: center; 
   gap: 60px; 
-  margin-top: 10px;
+  margin-top: -95px;
   margin-bottom: 20px;
   width: 100%;
   flex-wrap: wrap; 
@@ -251,7 +251,7 @@
 .battle-actions {
     display: flex;
     gap: 8px;
-    margin-top: 8px;
+    margin-top: -350px;
 }
 .battle-actions button {
   background: url("../../assets/button.png") no-repeat center center / cover;
@@ -292,7 +292,7 @@
 }
 
 /* form row */
-.form-row { display:flex; gap:8px; align-items:center; margin-bottom:12px; justify-content:center; }
+.form-row { display:flex; gap:8px; align-items:center; margin-bottom:20px; justify-content:center; }
 .form-row input[type="text"] { 
     flex:2; 
     padding:8px 10px; 
