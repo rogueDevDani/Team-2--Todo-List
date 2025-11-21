@@ -72,20 +72,20 @@
     grid-row: 1;
     grid-column: 1;
     img{
-        width: 350%;
+        width: 200%;
         height: 100px;
         margin: 0;
         border: none;
         position: relative;
-        left: -190px;
-        top: 180px;
+        left: -200px;
+        top: 190px;
     }
     filter: brightness(0.9) contrast(0.8);
 }
 .level-number {
   position: absolute;
-  top: 28%;
-  left: 51%;
+  top: 29%;
+  left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2; 
   font-size: 28px;
