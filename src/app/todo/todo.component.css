@@ -72,12 +72,12 @@
     grid-row: 1;
     grid-column: 1;
     img{
-        width: 200%;
+        width: 400%;
         height: 100px;
         margin: 0;
         border: none;
         position: relative;
-        left: -200px;
+        left: -245px;
         top: 190px;
     }
     filter: brightness(0.9) contrast(0.8);
